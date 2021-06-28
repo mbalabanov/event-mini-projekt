@@ -1,0 +1,424 @@
+<mxfile>
+    <diagram id="vvBdfMr015Pf-CxKplJR" name="Page-1">
+        <mxGraphModel dx="1309" dy="878" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="63" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="70" width="400" height="850" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="765" width="360" height="122" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;span style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Event-Startseite&lt;/b&gt;&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="&lt;b&gt;EVENTS&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="90" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Alle Events" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="90" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="Registrieren" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="90" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Login" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="90" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Nach Eventnamen suchen" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" parent="1" vertex="1">
+                    <mxGeometry x="111" y="150" width="255" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="Suche" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="130" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="Suchen" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="313" y="190" width="50" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="113" y="190" width="95" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="Startdatum" style="rounded=0;whiteSpace=wrap;html=1;" parent="32" vertex="1">
+                    <mxGeometry width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="32" vertex="1">
+                    <mxGeometry x="70" width="25" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="" style="triangle;whiteSpace=wrap;html=1;rotation=90;" parent="32" vertex="1">
+                    <mxGeometry x="77.5" y="10" width="10" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="213" y="190" width="95" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="33" vertex="1">
+                    <mxGeometry x="70" width="25" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="Enddatum" style="rounded=0;whiteSpace=wrap;html=1;" parent="33" vertex="1">
+                    <mxGeometry width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="" style="triangle;whiteSpace=wrap;html=1;rotation=90;" parent="33" vertex="1">
+                    <mxGeometry x="77.5" y="10" width="10" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="Event-Promo&lt;br&gt;(Zufallsauswahl und zukünftiges Startdatum)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="230" width="360" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="Events der nächsten Tage" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="125" y="362" width="230" height="33" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="396" width="88" height="92" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Eventname&lt;br style=&quot;font-size: 9px;&quot;&gt;Start- &amp;amp; Enddatum&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="488" width="80" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="Details" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="518" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="Alle Events anzeigen" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="167" y="706" width="145" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="Redaktionsbereich" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="79" y="769" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="Username" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="79" y="794" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="Passwort" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="254" y="794" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="&lt;u&gt;Registrieren&lt;/u&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="264" y="852" width="75" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="Login" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="354" y="852" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" parent="1" vertex="1">
+                    <mxGeometry x="79" y="817" width="155" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" parent="1" vertex="1">
+                    <mxGeometry x="251.5" y="817" width="155" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="Footer" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="920" width="400" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="70" width="400" height="850" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="&lt;b&gt;EVENTS&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="90" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="Alle Events" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="90" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="Registrieren" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="730" y="90" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="71" value="Login" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="810" y="90" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="72" value="Nach Eventnamen suchen" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" parent="1" vertex="1">
+                    <mxGeometry x="551" y="150" width="255" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="73" value="Suche" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="130" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="Suchen" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="753" y="190" width="50" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="75" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="553" y="190" width="95" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" value="Startdatum" style="rounded=0;whiteSpace=wrap;html=1;" parent="75" vertex="1">
+                    <mxGeometry width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="75" vertex="1">
+                    <mxGeometry x="70" width="25" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="78" value="" style="triangle;whiteSpace=wrap;html=1;rotation=90;" parent="75" vertex="1">
+                    <mxGeometry x="77.5" y="10" width="10" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="79" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="653" y="190" width="95" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="80" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="79" vertex="1">
+                    <mxGeometry x="70" width="25" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="81" value="Enddatum" style="rounded=0;whiteSpace=wrap;html=1;" parent="79" vertex="1">
+                    <mxGeometry width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="82" value="" style="triangle;whiteSpace=wrap;html=1;rotation=90;" parent="79" vertex="1">
+                    <mxGeometry x="77.5" y="10" width="10" height="10" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="250" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="84" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="750" y="250" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="85" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="625" y="250" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="86" value="Eventname&lt;br&gt;Start- &amp;amp; Enddatum" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="364" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="87" value="Eventname&lt;br&gt;Start- &amp;amp; Enddatum" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="625" y="364" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="88" value="Eventname&lt;br&gt;Start- &amp;amp; Enddatum" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="750" y="364" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="89" value="Details" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="409" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="90" value="Details" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="625" y="409" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" value="Details" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="750" y="409" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="92" value="Home" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="90" width="42" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="94" value="Home" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="90" width="42" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="95" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="498.5" y="460" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="96" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="748.5" y="460" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="97" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="623.5" y="460" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="98" value="Eventname&lt;br&gt;Start- &amp;amp; Enddatum" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="498.5" y="574" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="99" value="Eventname&lt;br&gt;Start- &amp;amp; Enddatum" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="623.5" y="574" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="100" value="Eventname&lt;br&gt;Start- &amp;amp; Enddatum" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="748.5" y="574" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="101" value="Details" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="498.5" y="619" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="102" value="Details" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="623.5" y="619" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="103" value="Details" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="748.5" y="619" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="104" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="498.5" y="670" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="105" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="748.5" y="670" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="106" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="623.5" y="670" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="107" value="Eventname&lt;br&gt;Start- &amp;amp; Enddatum" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="498.5" y="784" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="108" value="Eventname&lt;br&gt;Start- &amp;amp; Enddatum" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="623.5" y="784" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="109" value="Eventname&lt;br&gt;Start- &amp;amp; Enddatum" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="748.5" y="784" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="110" value="Details" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="498.5" y="829" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="111" value="Details" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="623.5" y="829" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="112" value="Details" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="748.5" y="829" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="132" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="590" y="872" width="174" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="113" value="1" style="rounded=1;whiteSpace=wrap;html=1;" parent="132" vertex="1">
+                    <mxGeometry x="34" width="17" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="114" value="2" style="rounded=1;whiteSpace=wrap;html=1;" parent="132" vertex="1">
+                    <mxGeometry x="56" width="17" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="116" value="3" style="rounded=1;whiteSpace=wrap;html=1;" parent="132" vertex="1">
+                    <mxGeometry x="79" width="17" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="118" value="4" style="rounded=1;whiteSpace=wrap;html=1;" parent="132" vertex="1">
+                    <mxGeometry x="101" width="17" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="119" value="5" style="rounded=1;whiteSpace=wrap;html=1;" parent="132" vertex="1">
+                    <mxGeometry x="123" width="17" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="120" value="&amp;lt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="132" vertex="1">
+                    <mxGeometry width="17" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="122" value="&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="132" vertex="1">
+                    <mxGeometry x="157" width="17" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="133" value="Footer" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="920" width="400" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="134" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="920" y="70" width="400" height="400" as="geometry"/>
+                </mxCell>
+                <mxCell id="135" value="&lt;b&gt;EVENTS&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="90" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="136" value="Alle Events" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="90" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="137" value="Registrieren" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1170" y="90" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="138" value="Login" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="1250" y="90" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="150" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="190" width="170" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="153" value="Eventname&lt;br&gt;&lt;br&gt;Startdatum&lt;br&gt;Enddatum" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="120" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="159" value="Home" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1040" y="90" width="42" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="186" value="Footer" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="920" y="451" width="400" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="187" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&lt;br&gt;&lt;br&gt;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1125" y="176" width="175" height="261" as="geometry"/>
+                </mxCell>
+                <mxCell id="188" value="&lt;span style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Alle Events - Zugleich Suchergebnisseite&lt;/b&gt;&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="485" y="40" width="385" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="189" value="&lt;span style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Event-Detailseite&lt;/b&gt;&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="920" y="40" width="385" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="190" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="920" y="550" width="400" height="400" as="geometry"/>
+                </mxCell>
+                <mxCell id="191" value="&lt;b&gt;EVENTS&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="570" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="192" value="Alle Events" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="570" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="193" value="Registrieren" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1170" y="570" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="194" value="Login" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="1250" y="570" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="196" value="Registrieren" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="610" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="197" value="Home" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1040" y="570" width="42" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="198" value="Footer" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="920" y="920" width="400" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="200" value="&lt;span style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Registierungs-Seite&lt;/b&gt;&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="920" y="520" width="385" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="203" value="Username / Emailadresse" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="650" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="204" value="Passwort" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="942.5" y="723.5" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="207" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="673" width="155" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="208" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="746.5" width="155" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="209" value="Passwort bestätigen" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1142.5" y="723.5" width="127.5" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="210" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" parent="1" vertex="1">
+                    <mxGeometry x="1140" y="746.5" width="155" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="211" value="Vor- und Nachname" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1140" y="650" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="212" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" parent="1" vertex="1">
+                    <mxGeometry x="1140" y="673" width="155" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="213" value="Registrieren" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="810" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="230" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="396" width="88" height="92" as="geometry"/>
+                </mxCell>
+                <mxCell id="231" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="396" width="88" height="92" as="geometry"/>
+                </mxCell>
+                <mxCell id="232" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="332" y="396" width="88" height="92" as="geometry"/>
+                </mxCell>
+                <mxCell id="234" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Eventname&lt;br style=&quot;font-size: 9px;&quot;&gt;Start- &amp;amp; Enddatum&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="488" width="80" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="235" value="Details" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="518" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="236" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Eventname&lt;br style=&quot;font-size: 9px;&quot;&gt;Start- &amp;amp; Enddatum&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="488" width="80" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="237" value="Details" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="518" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="238" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Eventname&lt;br style=&quot;font-size: 9px;&quot;&gt;Start- &amp;amp; Enddatum&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
+                    <mxGeometry x="332" y="488" width="80" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="239" value="Details" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="332" y="518" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="252" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="59.5" y="551" width="88" height="92" as="geometry"/>
+                </mxCell>
+                <mxCell id="253" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Eventname&lt;br style=&quot;font-size: 9px;&quot;&gt;Start- &amp;amp; Enddatum&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
+                    <mxGeometry x="59.5" y="643" width="80" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="254" value="Details" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="59.5" y="673" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="255" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="149.5" y="551" width="88" height="92" as="geometry"/>
+                </mxCell>
+                <mxCell id="256" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="239.5" y="551" width="88" height="92" as="geometry"/>
+                </mxCell>
+                <mxCell id="257" value="Bild" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="331.5" y="551" width="88" height="92" as="geometry"/>
+                </mxCell>
+                <mxCell id="258" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Eventname&lt;br style=&quot;font-size: 9px;&quot;&gt;Start- &amp;amp; Enddatum&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
+                    <mxGeometry x="149.5" y="643" width="80" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="259" value="Details" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="149.5" y="673" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="260" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Eventname&lt;br style=&quot;font-size: 9px;&quot;&gt;Start- &amp;amp; Enddatum&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
+                    <mxGeometry x="239.5" y="643" width="80" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="261" value="Details" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="239.5" y="673" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="262" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Eventname&lt;br style=&quot;font-size: 9px;&quot;&gt;Start- &amp;amp; Enddatum&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
+                    <mxGeometry x="331.5" y="643" width="80" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="263" value="Details" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+                    <mxGeometry x="331.5" y="673" width="50" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="264" value="Bundesland&lt;br&gt;Kategorie&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="940" y="319" width="110" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
