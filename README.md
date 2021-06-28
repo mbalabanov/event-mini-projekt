@@ -11,7 +11,7 @@ Ziel dieses Projekts ist die Implementierung einer einfachen Event-Plattform. Ev
 - und eine Kategorie (z.B. Ausstellung, Musikkonzert, Oper, usw.)
 
 
-## Sitemap Frontend
+## Sitemap
 
 ![Sitemap](documentation/sitemap.png)
 
