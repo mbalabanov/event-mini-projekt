@@ -10,7 +10,7 @@
                     <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Alle Events</a>
+                    <a class="nav-link" href="event-list.php">Alle Events</a>
                 </li>
             </ul>
             <a class="btn btn-warning mx-1" href="register.php">Registrieren</a>

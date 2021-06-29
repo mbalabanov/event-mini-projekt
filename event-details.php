@@ -61,6 +61,7 @@ if (!isset($_REQUEST["eventID"])) {
                 echo "<strong>Ende: </strong>$eventEndDatumExplodedTag. $eventMonate[$endMonatsIndex] $eventEndDatumExplodedJahr</p>";
                 echo "<p><strong>Beschreibung:</strong><br/>$row[eventBeschreibung]</p>";
                 ?>
+                <a href="event-list.php" class="btn btn-primary">All Events</a>
             </div>
         </div>
     </main>
