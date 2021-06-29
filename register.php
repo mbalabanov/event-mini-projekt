@@ -3,12 +3,25 @@ require_once "include/include_db.php";
 require_once "include/include_head.php";
 ?>
 
-<body>
-	<main class="container">
+<body class="bg-light">
+<main class="container bg-white p-2">
 
 		<?php
-
 		require_once "include/include_nav.php";
+		?>
+
+		<div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <h2>Neuen User Registrieren</h2>
+				<p>Das Passwort muss mindestens acht Zeichen lang sein.<br/>Sie können mit folgedem bestehenden Test-User <a href="login.php">einloggen</a>: eventuser, user@event.com, Test1234</p>
+            </div>
+        </div>
+
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+
+		<?php
 
 		//Hilfsvariablen
 		$userName = "";
@@ -17,30 +30,26 @@ require_once "include/include_head.php";
 		$password2 = "";
 		$zustimmung = "";
 
-		$ok = true;
+		$nutzerZustimmung = true;
 		$passwordError = "";
 
 		if (isset($_POST["registrieren"])) {
-			//Zuweisung an die Variablen
 			$userName = strip_tags($_POST["userName"]);
 			$email = $_POST["email"];
 			$password1 = $_POST["password1"];
 			$password2 = $_POST["password2"];
 
-			//Prüfung ob AGB angehakt
 			if (isset($_POST["zustimmung"])) {
 				$zustimmung = $_POST["zustimmung"];
 			} else {
-				$ok = false;
-				$passwordError .= "Sie müssen den AGB zustimmen!<br>";
+				$nutzerZustimmung = false;
+				$passwordError .= "<div class='alert alert-danger text-center'>Bitte stimmen Sie den Nutzungsbestimmungen zu.</div>";
 			}
 
-			//Prüfung ob Email
 			if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-				$ok = false;
-				$passwordError .= "Keine gültige email!<br>";
+				$nutzerZustimmung = false;
+				$passwordError .= "<div class='alert alert-danger text-center'>Das ist keine gültige Email-Adresse</div>";
 			} else {
-				//Prüfen, ob Email existiert
 				$sql = "SELECT * FROM user
 			WHERE userEmail = :email";
 
@@ -50,24 +59,21 @@ require_once "include/include_head.php";
 				$row = $stmt->fetch();
 
 				if ($row !== false) {
-					$ok = false;
-					$passwordError .= "Email existiert bereits!<br>";
+					$nutzerZustimmung = false;
+					$passwordError .= "<div class='alert alert-danger text-center'>Diese Email-Adresse ist bereits registriert.</div>";
 				}
 			}
 
-			//Prüfung PW Mind. 8 Zeichen hat
 			if (strlen($password1) < 8) {
-				$ok = false;
-				$passwordError .= "<div class='alert alert-danger'>Das Passwort muss mind 8 Zeichen haben!</div>";
+				$nutzerZustimmung = false;
+				$passwordError .= "<div class='alert alert-danger text-center'>Das Passwort muss mindestens acht Zeichen lang sein.</div>";
 			}
 
-			//Prüfung ob PW übereinstimmt
 			if ($password1 <> $password2) {
-				$ok = false;
-				$passwordError .= "Das Passwort stimmt nicht!<br>";
+				$nutzerZustimmung = false;
+				$passwordError .= "<div class='alert alert-danger text-center'>Das eingegebene Passwort ist nicht korrekt</div>";
 			}
 
-			// Passwort-Check
 			$muster1 = "/[A-Z]/";
 			$muster2 = "/[a-z]/";
 			$muster3 = "/[0-9]/";
@@ -78,13 +84,12 @@ require_once "include/include_head.php";
 				preg_match($muster3, $password1)
 			) {
 			} else {
-				$ok = false;
-				$passwordError .= "<div class='alert alert-danger'>Bitte beachten Sie die Passwortrichtlinien.</div>";
+				$nutzerZustimmung = false;
+				$passwordError .= "<div class='alert alert-warning text-center'>Bitte beachten Sie die Passwortrichtlinien.</div>";
 			}
 
-			//Wenn immer noch ok
-			if ($ok === true) {
-				$passwordError = "<div class='alert alert-success'>Vielen Dank für die Registrierung!<br><a href='login.php' class='btn btn-primary'>Zum Login</a></div>";
+			if ($nutzerZustimmung === true) {
+				$passwordError = "<div class='alert alert-success text-center'>Vielen Dank für die Registrierung!<br><a href='login.php' class='btn btn-primary'>Zum Login</a></div>";
 
 				$options = ["cost" => 12];
 				$password1 = password_hash($password1, PASSWORD_BCRYPT, $options);
@@ -112,16 +117,7 @@ require_once "include/include_head.php";
 		echo $passwordError;
 		?>
 
-		<div class="row mt-5">
-            <div class="col-md-12 text-center">
-                <h2>Neuen User Registrieren</h2>
-            </div>
-        </div>
-
-		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-			<div class="row">
-				<div class="col-md-8 offset-md-2 alert alert-secondary">
-					<div class="row">
+					<div class="row alert alert-secondary">
 						<div class="col-md-6">
 							<label for="inputUsername" class="form-label">Username</label>
 							<input type="text" name="userName" value="<?php echo $userName; ?>" id="inputUsername" class="form-control">
@@ -134,12 +130,17 @@ require_once "include/include_head.php";
 							<input type="password" name="password1" value="<?php echo $password1; ?>" id="inputPassword" class="form-control">
 							<label for="inputPasswordRepeat" class="form-label">Passwort wiederholen</label>
 							<input type="password" name="password2" value="<?php echo $password2; ?>" id="inputPasswordRepeat" class="form-control">
-							<input type="checkbox" name="zustimmung" value="ok" <?php if ($zustimmung == "ok") {
-																					echo "checked";
-																				} ?>>&nbsp;Ich stimme zu<br>
-							<input type="submit" name="registrieren" class="btn btn-primary btn-lg" value="Registrieren">
+
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="nutzerZustimmung" name="zustimmung" id="zustimmungCheckbox">
+								<label class="form-check-label" for="zustimmungCheckbox" <?php if ($zustimmung == "nutzerZustimmung") { echo "checked";} ?> >
+									Nutzungsbestimmungen zustimmen
+								</label>
+							</div>
+
 						</div>
 					</div>
+					<p class="text-end"><a class="btn btn-secondary mx-1" href="index.php">Zurück</a><input type="submit" name="registrieren" class="btn btn-primary" value="Registrieren"></p>
 				</div>
 			</div>
 		</form>

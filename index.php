@@ -6,9 +6,8 @@ $dateToday = date("Y-m-d");
 
 
 
-<body>
-
-    <main class="container">
+<body class="bg-light">
+    <main class="container bg-white p-2">
 
         <?php
         require_once "include/include_nav.php";
@@ -37,7 +36,7 @@ $dateToday = date("Y-m-d");
                         while ($carouselItem = $stmt->fetch()) {
                             echo "
                                 <div class='carousel-item $active'>
-                                    <img src='img/$carouselItem[eventBild]' class='d-block w-100 rounded' alt='$carouselItem[eventName]'>
+                                <a href='event-details.php?eventID=$carouselItem[eventID]'><img src='img/$carouselItem[eventBild]' class='d-block w-100 rounded' alt='$carouselItem[eventName]'></a>
                                     <div class='carousel-caption d-none d-md-block'>
                                         <h5>$carouselItem[eventName]</h5>
                                         <p class='text-truncate'>$carouselItem[eventBeschreibung]</p>
@@ -63,12 +62,12 @@ $dateToday = date("Y-m-d");
         </div>
 
         <div class="row mt-5">
-            <div class="col-md-12">
+            <div class="col-md-12 text-center">
                 <h2>Events demnächst</h2>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row p-2">
             <?php
             $sql = "SELECT * FROM event WHERE eventStartDatum > $dateToday ORDER BY eventStartDatum ASC LIMIT 6";
             $stmt = $db->query($sql);
@@ -76,8 +75,8 @@ $dateToday = date("Y-m-d");
                 echo "
                     <div class='col-md-4 my-2 p-1'>
                         <div class='border rounded bg-light p-3 text-center'>
-                            <h4>$row[eventName]</h4>
-                            <p><img src='img/$row[eventBild]' alt='$row[eventName]' class='img-fluid rounded'/></p>
+                            <h4><a href='event-details.php?eventID=$row[eventID]' class='text-decoration-none'>$row[eventName]</a></h4>
+                            <p><a href='event-details.php?eventID=$row[eventID]'><img src='img/$row[eventBild]' alt='$row[eventName]' class='img-fluid rounded'/></a></p>
                             <h5>$row[eventKategorie] in $row[eventBundesland]</h5>
                     ";
 
@@ -89,6 +88,7 @@ $dateToday = date("Y-m-d");
 
                 echo "
                             <p><strong>Start:</strong> $eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]<br/><strong>Ende:</strong> $eventEndDatumExploded[2]. $eventMonate[$eventEndMonatNumerisch] $eventEndDatumExploded[0]</p> 
+                            <p><a href='event-details.php?eventID=$row[eventID]' class='btn btn-primary btn-sm'>Details</a></p>
                         </div>
                     </div>
                     ";

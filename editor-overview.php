@@ -17,9 +17,8 @@ if (isset($_GET["loeschen"])) {
 
 ?>
 
-<body>
-
-    <main class="container">
+<body class="bg-light">
+<main class="container bg-white p-2">
 
         <?php
         require_once "include/include_nav.php";
@@ -57,7 +56,8 @@ if (isset($_GET["loeschen"])) {
                 echo "
                             <p><strong>Start:</strong> $eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]<br/><strong>Ende:</strong> $eventEndDatumExploded[2]. $eventMonate[$eventEndMonatNumerisch] $eventEndDatumExploded[0]</p> 
                             <p><a class='btn btn-danger btn-sm' href='?loeschen=$row[eventID]' onclick='return loeschNachfrage()'>Löschen</a> 
-                            <a class='btn btn-primary btn-sm' href='edit-event.php?eventID=$row[eventID]'>Bearbeiten</a></p>
+                            <a class='btn btn-warning btn-sm' href='edit-event.php?eventID=$row[eventID]'>Bearbeiten</a>
+                            <a href='event-details.php?eventID=$row[eventID]' class='btn btn-primary btn-sm'>Details</a></p>
                         </div>
                     </div>
                     ";

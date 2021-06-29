@@ -31,9 +31,8 @@ if (isset($_POST["einloggen"])) {
 
 ?>
 
-<body>
-
-    <main class="container">
+<body class="bg-light">
+<main class="container bg-white p-2">
 
         <?php
         require_once "include/include_nav.php";

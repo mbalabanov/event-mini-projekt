@@ -1,5 +1,6 @@
 <?php
 require_once "include/include_db.php";
+require_once "include/include_head.php";
 
 // Neuen Event in DB einfügen
 if (isset($_POST["senden"])) {
@@ -53,19 +54,8 @@ if (isset($_GET["loeschen"])) {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="de">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Kalendar</title>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
-<body>
-
-    <main class="container">
+<body class="bg-light">
+	<main class="container bg-white p-2">
 
         <?php
         require_once "include/include_nav.php";
@@ -76,7 +66,7 @@ if (isset($_GET["loeschen"])) {
             </div>
         </div>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="p-24 alert alert-primary">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="p-4 alert alert-primary">
 
             <div class="row">
                 <div class="col-md-12">
@@ -134,17 +124,25 @@ if (isset($_GET["loeschen"])) {
                         <div class="col-md-6">
                             <select name='startDatumMonat' class='form-select'>
                                 <?php
-                                foreach ($eventMonate as $monatsNummer => $monatName) {
-                                    echo "<option value='$monatsNummer'>$monatName</option>";
+                                foreach ($eventMonate as $monatsEndNummer => $monatEndName) {
+                                    $eigentlicheMonatsnummer = $monatsNummer + 1;
+                                    echo "<option value='" . $eigentlicheMonatsnummer . "'>$monatEndName</option>";
                                 }
                                 ?>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <select name='startDatumJahr' class='form-select'>
-                                <option value="2021">2021</option>
-                                <option value="2022">2022</option>
-                                <option value="2023">2023</option>
+                                <?php
+                                $currentYear = (int)date("Y");
+                                $pastYear = $currentYear - 10;
+                                $futureYear = (int)$currentYear + 10;
+                                for ($yearIterator = $pastYear; $yearIterator <= $futureYear; $yearIterator++) {
+                                    $selected = "";
+                                    if($currentYear == $yearIterator) { $selected = "selected"; };
+                                    echo "<option value='$yearIterator' $selected>$yearIterator</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -169,16 +167,24 @@ if (isset($_GET["loeschen"])) {
                             <select name='endDatumMonat' class='form-select'>
                                 <?php
                                 foreach ($eventMonate as $monatsEndNummer => $monatEndName) {
-                                    echo "<option value='" . $monatsEndNummer + 1 . "'>$monatEndName</option>";
+                                    $eigentlicheMonatsnummer = $monatsNummer + 1;
+                                    echo "<option value='" . $eigentlicheMonatsnummer . "'>$monatEndName</option>";
                                 }
                                 ?>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <select name='endDatumJahr' class='form-select'>
-                                <option>2021</option>
-                                <option>2022</option>
-                                <option>2023</option>
+                                <?php
+                                $currentYear = (int)date("Y");
+                                $pastYear = $currentYear - 10;
+                                $futureYear = (int)$currentYear + 10;
+                                for ($yearIterator = $pastYear; $yearIterator <= $futureYear; $yearIterator++) {
+                                    $selected = "";
+                                    if($currentYear == $yearIterator) { $selected = "selected"; };
+                                    echo "<option value='$yearIterator' $selected>$yearIterator</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                     </div>
