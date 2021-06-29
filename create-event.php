@@ -59,7 +59,7 @@ if (isset($_GET["loeschen"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events</title>
+    <title>Event Kalendar</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -67,17 +67,16 @@ if (isset($_GET["loeschen"])) {
 
     <main class="container">
 
-    <?php
+        <?php
         require_once "include/include_nav.php";
-    ?>
+        ?>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <h2>Neuen Event Erstellen</h2>
+            </div>
+        </div>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="p-24 alert alert-primary">
-
-            <div class="row mt-2">
-                <div class="col-md-12">
-                    <h2>Neuen Event Erstellen</h2>
-                </div>
-            </div>
 
             <div class="row">
                 <div class="col-md-12">
@@ -93,7 +92,7 @@ if (isset($_GET["loeschen"])) {
                             $eventBundeslaender = ["Burgenland", "Kärnten", "Niederösterreich", "Oberösterreich", "Salzburg", "Steiermark", "Tirol", "Vorarlberg", "Wien"];
 
                             echo "<label for='categoryInput' class='form-label'>Kategorie</label>";
-                            echo "<select name='eventKategorie' id='categoryInput' class='form-control'>";
+                            echo "<select name='eventKategorie' id='categoryInput' class='form-select' >";
                             foreach ($eventKategorien as $einzelKategorie) {
                                 echo "<option value='$einzelKategorie'>$einzelKategorie</option>";
                             }
@@ -103,7 +102,7 @@ if (isset($_GET["loeschen"])) {
                             echo "<div class='col-md-4'>";
 
                             echo "<label for='bundeslandInput' class='form-label'>Bundesland</label>";
-                            echo "<select name='eventBundesland' id='bundeslandInput' class='form-control'>";
+                            echo "<select name='eventBundesland' id='bundeslandInput' class='form-select'>";
                             foreach ($eventBundeslaender as $eventBundesland) {
                                 echo "<option value='$eventBundesland'>$eventBundesland</option>";
                             }
@@ -124,7 +123,7 @@ if (isset($_GET["loeschen"])) {
                     </div>
                     <div class="row">
                         <div class="col-md-2">
-                            <select name='startDatumTag' id="eventStartDatumSelect" class='form-control'>
+                            <select name='startDatumTag' id="eventStartDatumSelect" class='form-select'>
                                 <?php
                                 for ($nummerTag = 1; $nummerTag <= 31; $nummerTag++) {
                                     echo "<option value='$nummerTag'>$nummerTag</option>";
@@ -133,7 +132,7 @@ if (isset($_GET["loeschen"])) {
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <select name='startDatumMonat' class='form-control'>
+                            <select name='startDatumMonat' class='form-select'>
                                 <?php
                                 foreach ($eventMonate as $monatsNummer => $monatName) {
                                     echo "<option value='$monatsNummer'>$monatName</option>";
@@ -142,7 +141,7 @@ if (isset($_GET["loeschen"])) {
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <select name='startDatumJahr' class='form-control'>
+                            <select name='startDatumJahr' class='form-select'>
                                 <option value="2021">2021</option>
                                 <option value="2022">2022</option>
                                 <option value="2023">2023</option>
@@ -158,7 +157,7 @@ if (isset($_GET["loeschen"])) {
 
                     <div class="row mt-2">
                         <div class="col-md-2">
-                            <select name="endDatumTag" id="eventEndDatumSelect" class='form-control'>
+                            <select name="endDatumTag" id="eventEndDatumSelect" class='form-select'>
                                 <?php
                                 for ($nummerEndTag = 1; $nummerEndTag <= 31; $nummerEndTag++) {
                                     echo "<option value='" . $nummerEndTag . "'>" . $nummerEndTag . "</option>";
@@ -167,7 +166,7 @@ if (isset($_GET["loeschen"])) {
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <select name='endDatumMonat' class='form-control'>
+                            <select name='endDatumMonat' class='form-select'>
                                 <?php
                                 foreach ($eventMonate as $monatsEndNummer => $monatEndName) {
                                     echo "<option value='" . $monatsEndNummer + 1 . "'>$monatEndName</option>";
@@ -176,7 +175,7 @@ if (isset($_GET["loeschen"])) {
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <select name='endDatumJahr' class='form-control'>
+                            <select name='endDatumJahr' class='form-select'>
                                 <option>2021</option>
                                 <option>2022</option>
                                 <option>2023</option>
@@ -194,7 +193,7 @@ if (isset($_GET["loeschen"])) {
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <textarea name="eventBeschreibung" id="BeschreibungInput" class='form-control'></textarea>
+                            <textarea name="eventBeschreibung" id="BeschreibungInput" class='form-control'  rows="6"></textarea>
                         </div>
                     </div>
                 </div>
@@ -206,44 +205,8 @@ if (isset($_GET["loeschen"])) {
                 </div>
             </div>
         </form>
-
-
-
-        <div class="row mt-5">
-            <div class="col-md-12">
-                <h2>Eventliste</h2>
-            </div>
-        </div>
-
-        <div class="row">
-            <?php
-            $sql = "SELECT * FROM event";
-            $stmt = $db->query($sql);
-
-            while ($row = $stmt->fetch()) {
-                echo "
-                    <div class='col-md-4 my-2 p-1'>
-                        <div class='border rounded bg-light p-3'>
-                            <h4>$row[eventName]</h4>
-                            <h5>$row[eventKategorie] in $row[eventBundesland]</h5>
-                            <p>Start: $row[eventStartDatum]. Ende: $row[eventEndDatum]</p> 
-                            <p><a class='btn btn-danger btn-sm' href='?loeschen=$row[eventID]' onclick='return loeschNachfrage()'>Löschen</a> 
-                            <a class='btn btn-primary btn-sm' href='051artikel_update.php?eventID=$row[eventID]'>Ändern</a></p>
-                        </div>
-                    </div>
-                    ";
-            }
-
-            ?>
-        </div>
-        </div>
     </main>
-    <script>
-        function loeschNachfrage() {
-            return confirm("Wollen Sie den Event wirklich löschen?");
-        }
-    </script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-</body>
 
-</html>
+<?php
+require_once "include/include_footer.php";
+?>
