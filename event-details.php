@@ -13,7 +13,7 @@ if (!isset($_REQUEST["eventID"])) {
 
 ?>
 
-<body class="bg-light">
+<body class="alert-primary">
     <main class="container bg-white p-2">
 
         <?php
@@ -44,7 +44,7 @@ if (!isset($_REQUEST["eventID"])) {
         ?>
 
         <?php echo "<h2>$row[eventName]</h2>"; ?>
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-md-6">
                 <?php
                 echo "<img class='img-fluid rounded my-2' src='img/$row[eventBild]' alt='$row[eventName]'/>";
@@ -61,7 +61,7 @@ if (!isset($_REQUEST["eventID"])) {
                 echo "<strong>Ende: </strong>$eventEndDatumExplodedTag. $eventMonate[$endMonatsIndex] $eventEndDatumExplodedJahr</p>";
                 echo "<p><strong>Beschreibung:</strong><br/>$row[eventBeschreibung]</p>";
                 ?>
-                <a href="event-list.php" class="btn btn-primary">All Events</a>
+                <a href="event-list.php" class="btn btn-primary">Zur Event-Liste</a>
             </div>
         </div>
     </main>

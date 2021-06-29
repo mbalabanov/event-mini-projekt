@@ -3,7 +3,7 @@ require_once "include/include_db.php";
 require_once "include/include_head.php";
 ?>
 
-<body class="bg-light">
+<body class="alert-primary">
     <main class="container bg-white p-2">
 
         <?php

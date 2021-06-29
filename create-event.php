@@ -54,7 +54,7 @@ if (isset($_GET["loeschen"])) {
 
 ?>
 
-<body class="bg-light">
+<body class="alert-primary">
 	<main class="container bg-white p-2">
 
         <?php

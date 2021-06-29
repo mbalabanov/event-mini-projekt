@@ -6,7 +6,7 @@ $dateToday = date("Y-m-d");
 
 
 
-<body class="bg-light">
+<body class="alert-primary">
     <main class="container bg-white p-2">
 
         <?php
@@ -69,11 +69,11 @@ $dateToday = date("Y-m-d");
 
         <div class="row p-2">
             <?php
-            $sql = "SELECT * FROM event WHERE eventStartDatum > $dateToday ORDER BY eventStartDatum ASC LIMIT 6";
+            $sql = "SELECT * FROM event WHERE eventStartDatum > $dateToday ORDER BY eventStartDatum ASC LIMIT 8";
             $stmt = $db->query($sql);
             while ($row = $stmt->fetch()) {
                 echo "
-                    <div class='col-md-4 my-2 p-1'>
+                    <div class='col-md-3 my-2 p-1'>
                         <div class='border rounded bg-light p-3 text-center'>
                             <h4><a href='event-details.php?eventID=$row[eventID]' class='text-decoration-none'>$row[eventName]</a></h4>
                             <p><a href='event-details.php?eventID=$row[eventID]'><img src='img/$row[eventBild]' alt='$row[eventName]' class='img-fluid rounded'/></a></p>
@@ -95,6 +95,31 @@ $dateToday = date("Y-m-d");
             }
 
             ?>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12 text-center">
+                <h2>Einloggen</h2>
+                <p>Einloggen mit folgendem Test-Account: eventuser, user@event.com, Test1234</p>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-8 offset-md-2 alert alert-secondary">
+                <form method="post" class="row" action="<?php echo 'login.php'  ?>">
+                    <div class="mb-3 col-md-6">
+                        <label for="inputEmail" class="form-label">Email Adresse</label>
+                        <input type="email" class="form-control" id="inputEmail" name="email" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="inputPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" name="password">
+                    </div>
+                    <p class="text-end mt-2">
+                        <a class="btn btn-secondary" href="index.php">Zurück</a>
+                        <a class="btn btn-warning" href="register.php">Neu registrieren</a>
+                        <button type="submit" class="btn btn-primary" name="einloggen">Login</button>
+                    </p>
+                </form>
+            </div>
         </div>
     </main>
 

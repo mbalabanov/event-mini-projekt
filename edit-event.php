@@ -57,7 +57,7 @@ if(isset($_POST["speichern"]))
 }
 
 ?>
-<body class="bg-light">
+<body class="alert-primary">
     <main class="container bg-white p-2">
 
 		<?php
