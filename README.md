@@ -17,4 +17,7 @@ Ziel dieses Projekts ist die Implementierung einer einfachen Event-Plattform. Ev
 
 ## Wireframes
 
-![Sitemap](documentation/wireframes.png)
+![Wireframes](documentation/wireframes.png)
+
+## Konzept
+![Konzeptskizze](documentation/skizze.png)
