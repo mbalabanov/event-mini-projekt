@@ -23,7 +23,7 @@ if (isset($_POST["einloggen"])) {
                 $_SESSION["userName"] = $row["userName"];
                 $_SESSION["userRole"] = $row["userRole"];
                 //Weiterleiten
-                header("location:040_portal.php");
+                header("location:editor-overview.php");
             }
         }
     }

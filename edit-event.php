@@ -260,6 +260,7 @@ if(isset($_POST["speichern"]))
             <div class="row mt-2">
                 <div class="col-md-12">
                     <input type="submit" name="speichern" class="btn btn-primary" value="Event speichern">
+                    <a href="editor-overview.php" class="btn btn-secondary">Zum Redaktionsbereich</a>
                 </div>
             </div>
         </form>

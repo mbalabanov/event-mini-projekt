@@ -25,13 +25,13 @@ if (isset($_GET["loeschen"])) {
         ?>
 
         <div class="row mt-5">
-            <div class="col-md-12">
-                <h2>Liste Aller Events</h2>
+            <div class="col-md-12 text-center">
+                <h2>Events Redaktionsbereich</h2>
                 <p><a href="create-event.php" class="btn btn-primary btn-lg">Neuen Event anlegen</a></p>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row p-2">
             <?php
             $sql = "SELECT * FROM event";
             $stmt = $db->query($sql);

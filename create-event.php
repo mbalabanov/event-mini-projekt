@@ -208,6 +208,7 @@ if (isset($_GET["loeschen"])) {
             <div class="row mt-2">
                 <div class="col-md-12">
                     <input type="submit" name="senden" class="btn btn-primary" value="Event speichern">
+                    <a href="editor-overview.php" class="btn btn-secondary">Zum Redaktionsbereich</a>
                 </div>
             </div>
         </form>
