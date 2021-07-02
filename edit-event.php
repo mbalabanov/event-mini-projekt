@@ -2,39 +2,45 @@
 require_once "include/include_db.php";
 require_once "include/include_head.php";
 
-if(isset($_REQUEST["eventID"]))
-{
+if (isset($_REQUEST["eventID"])) {
     $eventID = (int)$_REQUEST["eventID"];
     $successMessage = "";
 }
 
-if(isset($_POST["speichern"]))
-{
-    $eventName = trim( strip_tags( $_POST["eventName"] ) );
-    $eventKategorie = trim( strip_tags( $_POST["eventKategorie"] ) );
-    $eventBundesland = trim( strip_tags( $_POST["eventBundesland"] ) );
-    $eventBeschreibung = trim( strip_tags( $_POST["eventBeschreibung"] ) );
+if (isset($_POST["speichern"])) {
+    $eventName = trim(strip_tags($_POST["eventName"]));
+    $eventKategorie = trim(strip_tags($_POST["eventKategorie"]));
+    $eventBundesland = trim(strip_tags($_POST["eventBundesland"]));
+    $eventBeschreibung = trim(strip_tags($_POST["eventBeschreibung"]));
 
-    $startDatumTag = (int)trim( strip_tags( $_POST["startDatumTag"] ) );
-    $startDatumMonat = (int)trim( strip_tags( $_POST["startDatumMonat"] ) );
-    $startDatumJahr = (int)trim( strip_tags( $_POST["startDatumJahr"] ) );
+    $startDatumTag = (int)trim(strip_tags($_POST["startDatumTag"]));
+    $startDatumMonat = (int)trim(strip_tags($_POST["startDatumMonat"]));
+    $startDatumJahr = (int)trim(strip_tags($_POST["startDatumJahr"]));
 
-    $endDatumTag = (int)trim( strip_tags( $_POST["endDatumTag"] ) );
-    $endDatumMonat = (int)trim( strip_tags( $_POST["endDatumMonat"] ) );
-    $endDatumJahr = (int)trim( strip_tags( $_POST["endDatumJahr"] ) );
-    
-    if ($endDatumTag < 10) { $endDatumTag = "0".$endDatumTag; };
-    if ($startDatumTag < 10) { $startDatumTag = "0".$startDatumTag; };
+    $endDatumTag = (int)trim(strip_tags($_POST["endDatumTag"]));
+    $endDatumMonat = (int)trim(strip_tags($_POST["endDatumMonat"]));
+    $endDatumJahr = (int)trim(strip_tags($_POST["endDatumJahr"]));
 
-    if ($endDatumMonat < 10) { $endDatumMonat = "0".$endDatumMonat; };
-    if ($startDatumMonat < 10) { $startDatumMonat = "0".$startDatumMonat; };
+    if ($endDatumTag < 10) {
+        $endDatumTag = "0" . $endDatumTag;
+    };
+    if ($startDatumTag < 10) {
+        $startDatumTag = "0" . $startDatumTag;
+    };
+
+    if ($endDatumMonat < 10) {
+        $endDatumMonat = "0" . $endDatumMonat;
+    };
+    if ($startDatumMonat < 10) {
+        $startDatumMonat = "0" . $startDatumMonat;
+    };
 
     $eventStartDatum = $startDatumJahr . "-" . $startDatumMonat . "-" . $startDatumTag;
     $eventEndDatum = $endDatumJahr . "-" . $endDatumMonat . "-" . $endDatumTag;
 
     $successMessage = "<div class='alert alert-success text-center'>Event wurde aktualisiert.</div>";
-    
-    $sql="
+
+    $sql = "
     UPDATE event SET
     eventName=:eventName,
     eventKategorie=:eventKategorie,
@@ -45,33 +51,34 @@ if(isset($_POST["speichern"]))
     WHERE eventID=:eventID
     ";
 
-    $stmt=$db->prepare($sql);
-    $stmt->bindParam(":eventID",$eventID);
-    $stmt->bindParam(":eventName",$eventName);
-    $stmt->bindParam(":eventKategorie",$eventKategorie);
-    $stmt->bindParam(":eventBundesland",$eventBundesland);
-    $stmt->bindParam(":eventStartDatum",$eventStartDatum);
-    $stmt->bindParam(":eventEndDatum",$eventEndDatum);
-    $stmt->bindParam(":eventBeschreibung",$eventBeschreibung);
-    $stmt->execute();    
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(":eventID", $eventID);
+    $stmt->bindParam(":eventName", $eventName);
+    $stmt->bindParam(":eventKategorie", $eventKategorie);
+    $stmt->bindParam(":eventBundesland", $eventBundesland);
+    $stmt->bindParam(":eventStartDatum", $eventStartDatum);
+    $stmt->bindParam(":eventEndDatum", $eventEndDatum);
+    $stmt->bindParam(":eventBeschreibung", $eventBeschreibung);
+    $stmt->execute();
 }
 
 ?>
+
 <body class="alert-primary">
     <main class="container bg-white p-2">
 
-		<?php
+        <?php
         require_once "include/include_nav.php";
 
-        $sql="SELECT * FROM event 
+        $sql = "SELECT * FROM event 
         WHERE eventID=:eventID";
-        $stmt=$db->prepare($sql);
-        $stmt->bindParam(":eventID",$eventID);
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":eventID", $eventID);
         $stmt->execute();
-        $row=$stmt->fetch();
+        $row = $stmt->fetch();
 
-        $eventStartDatumExploded = explode("-",$row['eventStartDatum']);
-        $eventEndDatumExploded = explode("-",$row['eventEndDatum']);
+        $eventStartDatumExploded = explode("-", $row['eventStartDatum']);
+        $eventEndDatumExploded = explode("-", $row['eventEndDatum']);
 
         $eventStartDatumExplodedTag = $eventStartDatumExploded[2];
         $eventStartDatumExplodedMonat = $eventStartDatumExploded[1];
@@ -81,11 +88,11 @@ if(isset($_POST["speichern"]))
         $eventEndDatumExplodedMonat = $eventEndDatumExploded[1];
         $eventEndDatumExplodedJahr = $eventEndDatumExploded[0];
 
-        echo "<h2>$row[eventName]</h2>";
+        echo "<h2  class='fw-light'>Event bearbeiten: $row[eventName]</h2>";
         echo $successMessage;
         ?>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="p-4 alert alert-primary">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="p-4 alert alert-warning">
 
             <div class="row">
                 <div class="col-md-12">
@@ -105,8 +112,7 @@ if(isset($_POST["speichern"]))
                             echo "<select name='eventKategorie' id='categoryInput' class='form-select' >";
                             foreach ($eventKategorien as $einzelKategorie) {
                                 $selected = '';
-                                if ($row['eventKategorie'] == $einzelKategorie)
-                                {
+                                if ($row['eventKategorie'] == $einzelKategorie) {
                                     $selected = 'selected';
                                 }
                                 echo "<option value='$einzelKategorie' $selected>$einzelKategorie</option>";
@@ -120,8 +126,7 @@ if(isset($_POST["speichern"]))
                             echo "<select name='eventBundesland' id='bundeslandInput' class='form-select'>";
                             foreach ($eventBundeslaender as $eventBundesland) {
                                 $selected = '';
-                                if ($row['eventBundesland'] == $eventBundesland)
-                                {
+                                if ($row['eventBundesland'] == $eventBundesland) {
                                     $selected = 'selected';
                                 }
                                 echo "<option value='$eventBundesland' $selected>$eventBundesland</option>";
@@ -147,8 +152,7 @@ if(isset($_POST["speichern"]))
                                 <?php
                                 for ($nummerTag = 1; $nummerTag <= 31; $nummerTag++) {
                                     $selected = "";
-                                    if ($eventStartDatumExplodedTag == $nummerTag)
-                                    {
+                                    if ($eventStartDatumExplodedTag == $nummerTag) {
                                         $selected = "selected";
                                     }
                                     echo "<option value='$nummerTag' $selected>$nummerTag</option>";
@@ -162,8 +166,7 @@ if(isset($_POST["speichern"]))
                                 foreach ($eventMonate as $monatsNummer => $monatName) {
                                     $selected = "";
                                     $eigentlicheMonatsnummer = $monatsNummer + 1;
-                                    if ($eventStartDatumExplodedMonat == $eigentlicheMonatsnummer)
-                                    {
+                                    if ($eventStartDatumExplodedMonat == $eigentlicheMonatsnummer) {
                                         $selected = "selected";
                                     }
                                     echo "<option value='$eigentlicheMonatsnummer' $selected>$monatName</option>";
@@ -179,7 +182,9 @@ if(isset($_POST["speichern"]))
                                 $futureYear = (int)$currentYear + 10;
                                 for ($yearIterator = $pastYear; $yearIterator <= $futureYear; $yearIterator++) {
                                     $selected = "";
-                                    if($eventStartDatumExplodedJahr == $yearIterator) { $selected = "selected"; };
+                                    if ($eventStartDatumExplodedJahr == $yearIterator) {
+                                        $selected = "selected";
+                                    };
                                     echo "<option value='$yearIterator' $selected>$yearIterator</option>";
                                 }
                                 ?>
@@ -199,8 +204,7 @@ if(isset($_POST["speichern"]))
                                 <?php
                                 for ($nummerTag = 1; $nummerTag <= 31; $nummerTag++) {
                                     $selected = "";
-                                    if ($eventEndDatumExplodedTag == $nummerTag)
-                                    {
+                                    if ($eventEndDatumExplodedTag == $nummerTag) {
                                         $selected = "selected";
                                     }
                                     echo "<option value='$nummerTag' $selected>$nummerTag</option>";
@@ -214,8 +218,7 @@ if(isset($_POST["speichern"]))
                                 foreach ($eventMonate as $monatsNummer => $monatName) {
                                     $selected = "";
                                     $eigentlicheMonatsnummer = $monatsNummer + 1;
-                                    if ($eventEndDatumExplodedMonat == $eigentlicheMonatsnummer)
-                                    {
+                                    if ($eventEndDatumExplodedMonat == $eigentlicheMonatsnummer) {
                                         $selected = "selected";
                                     }
                                     echo "<option value='$eigentlicheMonatsnummer' $selected>$monatName</option>";
@@ -231,7 +234,9 @@ if(isset($_POST["speichern"]))
                                 $futureYear = (int)$currentYear + 10;
                                 for ($yearIterator = $pastYear; $yearIterator <= $futureYear; $yearIterator++) {
                                     $selected = "";
-                                    if($eventEndDatumExplodedJahr == $yearIterator) { $selected = "selected"; };
+                                    if ($eventEndDatumExplodedJahr == $yearIterator) {
+                                        $selected = "selected";
+                                    };
                                     echo "<option value='$yearIterator' $selected>$yearIterator</option>";
                                 }
                                 ?>
@@ -249,9 +254,7 @@ if(isset($_POST["speichern"]))
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <textarea name="eventBeschreibung" id="BeschreibungInput" class='form-control' rows="6">
-                                <?php echo $row["eventBeschreibung"]; ?>
-                            </textarea>
+                            <textarea name="eventBeschreibung" id="BeschreibungInput" class='form-control' rows="6"><?php echo $row["eventBeschreibung"]; ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -266,8 +269,8 @@ if(isset($_POST["speichern"]))
         </form>
 
 
-        </main>
+    </main>
 
-<?php
+    <?php
     require_once "include/include_footer.php";
-?>
+    ?>

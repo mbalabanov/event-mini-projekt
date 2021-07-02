@@ -12,7 +12,7 @@ require_once "include/include_head.php";
 
 		<div class="row mt-5">
 			<div class="col-md-12 text-center">
-				<h2>Neuen User Registrieren</h2>
+				<h2 class="fw-light">Neuen User Registrieren</h2>
 				<p>Das Passwort muss mindestens acht Zeichen lang sein.<br />Sie können mit folgedem bestehenden Test-User <a href="login.php">einloggen</a>: eventuser, user@event.com, Test1234</p>
 			</div>
 		</div>

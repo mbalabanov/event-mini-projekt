@@ -40,7 +40,7 @@ if (isset($_POST["einloggen"])) {
 
         <div class="row mt-5">
             <div class="col-md-12 text-center">
-                <h2>Einloggen</h2>
+                <h2 class="fw-light">Einloggen</h2>
                 <p>Einloggen mit folgendem Test-Account: eventuser, user@event.com, Test1234</p>
             </div>
         </div>

@@ -4,8 +4,6 @@ require_once "include/include_head.php";
 $dateToday = date("Y-m-d");
 ?>
 
-
-
 <body class="alert-primary">
     <main class="container bg-white p-2">
 
@@ -38,7 +36,7 @@ $dateToday = date("Y-m-d");
                                 <div class='carousel-item $active'>
                                 <a href='event-details.php?eventID=$carouselItem[eventID]'><img src='img/$carouselItem[eventBild]' class='d-block w-100 rounded' alt='$carouselItem[eventName]'></a>
                                     <div class='carousel-caption d-none d-md-block'>
-                                        <h5>$carouselItem[eventName]</h5>
+                                        <h5 class='fw-light'>$carouselItem[eventName]</h5>
                                         <p class='text-truncate'>$carouselItem[eventBeschreibung]</p>
                                     </div>
                                 </div>";
@@ -61,9 +59,79 @@ $dateToday = date("Y-m-d");
             </div>
         </div>
 
+        <form method="post" action="event-list.php" class="p-4 mt-5 alert alert-secondary">
+            <div class='row'>
+                <div class='col-12 text-center'>
+                    <h3 class='fw-light'>Eventsuche</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="eventName" class="form-label">Suche nach Name</label>
+                    <input type="text" name="eventName" id="eventName" class="form-control"><br>
+                </div>
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="eventDatumSelect" class="form-label">Suche nach Datum</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <select name='eventDatumTag' id="eventDatumSelect" class='form-select'>
+                                <?php
+                                for ($nummerTag = 1; $nummerTag <= 31; $nummerTag++) {
+                                    $selected = "";
+                                    if ($dateTodayExplodedTag == $nummerTag) {
+                                        $selected = "selected";
+                                    }
+                                    echo "<option value='$nummerTag' $selected>$nummerTag</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <select name='eventDatumMonat' class='form-select'>
+                                <?php
+                                foreach ($eventMonate as $monatsNummer => $monatName) {
+                                    $selected = "";
+                                    $eigentlicheMonatsnummer = $monatsNummer + 1;
+                                    if ($dateTodayExplodedMonat == $eigentlicheMonatsnummer) {
+                                        $selected = "selected";
+                                    }
+                                    echo "<option value='$eigentlicheMonatsnummer' $selected>$monatName</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select name='eventDatumJahr' class='form-select'>
+                                <?php
+                                $currentYear = (int)date("Y");
+                                $pastYear = $currentYear - 10;
+                                $futureYear = (int)$currentYear + 10;
+                                for ($yearIterator = $pastYear; $yearIterator <= $futureYear; $yearIterator++) {
+                                    $selected = "";
+                                    if ($dateTodayExplodedJahr == $yearIterator) {
+                                        $selected = "selected";
+                                    };
+                                    echo "<option value='$yearIterator' $selected>$yearIterator</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 pt-4">
+                    <input type="submit" name="suchen" class="btn btn-primary mt-2 form-control" value="Suchen">
+                </div>
+            </div>
+
+        </form>
+
         <div class="row mt-5">
             <div class="col-md-12 text-center">
-                <h2>Events demnächst</h2>
+                <h2 class="fw-light">Events demnächst</h2>
             </div>
         </div>
 
@@ -75,9 +143,9 @@ $dateToday = date("Y-m-d");
                 echo "
                     <div class='col-md-3 my-2 p-1'>
                         <div class='border rounded bg-light p-3 text-center'>
-                            <h4><a href='event-details.php?eventID=$row[eventID]' class='text-decoration-none'>$row[eventName]</a></h4>
+                            <h4 class='fw-light'><a href='event-details.php?eventID=$row[eventID]' class='text-decoration-none'>$row[eventName]</a></h4>
                             <p><a href='event-details.php?eventID=$row[eventID]'><img src='img/$row[eventBild]' alt='$row[eventName]' class='img-fluid rounded'/></a></p>
-                            <h5>$row[eventKategorie] in $row[eventBundesland]</h5>
+                            <h5 class='fw-light'>$row[eventKategorie] in $row[eventBundesland]</h5>
                     ";
 
                 $eventStartDatumExploded = explode("-", $row["eventStartDatum"]);
@@ -98,7 +166,7 @@ $dateToday = date("Y-m-d");
         </div>
         <div class="row mt-2">
             <div class="col-md-12 text-center">
-                <h2>Einloggen</h2>
+                <h2 class="fw-light">Einloggen</h2>
                 <p>Einloggen mit folgendem Test-Account: eventuser, user@event.com, Test1234</p>
             </div>
         </div>
@@ -123,6 +191,6 @@ $dateToday = date("Y-m-d");
         </div>
     </main>
 
-<?php
-require_once "include/include_footer.php";
-?>
+    <?php
+    require_once "include/include_footer.php";
+    ?>

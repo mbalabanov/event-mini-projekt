@@ -7,7 +7,15 @@ if (isset($_POST["senden"])) {
     $eventName = trim(strip_tags($_POST["eventName"]));
 
     $eventStartDatumTag = trim(strip_tags($_POST["eventStartDatumTag"]));
+    if ($eventStartDatumTag < 10)
+    {
+        $eventStartDatumTag = "0" . $eventStartDatumTag;
+    };
     $eventStartDatumMonat = trim(strip_tags($_POST["eventStartDatumMonat"]));
+    if ($eventStartDatumMonat < 10)
+    {
+        $eventStartDatumMonat = "0" . $eventStartDatumMonat;
+    };
     $eventStartDatumJahr = trim(strip_tags($_POST["eventStartDatumJahr"]));
     $eventStartDatum = $eventStartDatumJahr . "-" . $eventStartDatumMonat . "-" . $eventStartDatumTag;
 
@@ -62,11 +70,11 @@ if (isset($_GET["loeschen"])) {
         ?>
         <div class="row mt-2">
             <div class="col-md-12">
-                <h2>Neuen Event Erstellen</h2>
+                <h2 class="fw-light">Neuen Event Erstellen</h2>
             </div>
         </div>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="p-4 alert alert-primary">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="p-4 alert alert-secondary">
 
             <div class="row">
                 <div class="col-md-12">

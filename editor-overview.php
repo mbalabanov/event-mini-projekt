@@ -26,7 +26,7 @@ if (isset($_GET["loeschen"])) {
 
         <div class="row mt-5">
             <div class="col-md-12 text-center">
-                <h2>Events Redaktionsbereich</h2>
+                <h2 class="fw-light">Events Redaktionsbereich</h2>
                 <p><a href="create-event.php" class="btn btn-primary btn-lg">Neuen Event anlegen</a></p>
             </div>
         </div>
@@ -42,9 +42,9 @@ if (isset($_GET["loeschen"])) {
                 echo "
                     <div class='col-md-4 my-2 p-1'>
                         <div class='border rounded bg-light p-3 text-center'>
-                            <h4>$row[eventName]</h4>
+                            <h4 class='fw-light'>$row[eventName]</h4>
                             <p><img src='img/$row[eventBild]' alt='$row[eventName]' class='img-fluid rounded'/></p>
-                            <h5>$row[eventKategorie] in $row[eventBundesland]</h5>
+                            <h5 class='fw-light'>$row[eventKategorie] in $row[eventBundesland]</h5>
                     ";
 
                 $eventStartDatumExploded = explode("-", $row["eventStartDatum"]);

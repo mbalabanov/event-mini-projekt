@@ -43,7 +43,7 @@ if (!isset($_REQUEST["eventID"])) {
 
         ?>
 
-        <?php echo "<h2>$row[eventName]</h2>"; ?>
+        <?php echo "<h2 class='fw-light'>$row[eventName]</h2>"; ?>
         <div class="row mb-5">
             <div class="col-md-6">
                 <?php
