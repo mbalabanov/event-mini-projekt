@@ -31,15 +31,10 @@ if (isset($_GET["loeschen"])) {
         <?php require_once "include/include_nav.php"; ?>
 
         <div class="row mt-2">
-            <div class="col-12 text-end">
-                <span class="alert alert-primary">Eingeloggt als <strong><?php echo $_SESSION["userName"]; ?></strong><a class='btn btn-danger mx-1' href='logout.php' type='submit'>Logout</a></span>
-            </div>
-        </div>
-
-        <div class="row">
             <div class="col-md-12 text-center">
                 <h2 class="fw-light">Events Redaktionsbereich</h2>
                 <p><a href="create-event.php" class="btn btn-primary btn-lg">Neuen Event anlegen</a></p>
+                <p>Diese Ansicht zeigt <strong>alle</strong> Events. Um nach einem bestimmten Event zu suchen, bitte rufen Sie die <a href="event-list.php">Eventliste</a> auf.</p>
             </div>
         </div>
 
@@ -83,8 +78,11 @@ if (isset($_GET["loeschen"])) {
                 }
 
                 echo "
-                            <p><a class='btn btn-danger btn-sm' href='?loeschen=$row[eventID]' onclick='return loeschNachfrage()'>Löschen</a> 
-                            <a class='btn btn-warning btn-sm' href='edit-event.php?eventID=$row[eventID]'>Bearbeiten</a></p>
+                            <p>
+                            <a class='btn btn-danger btn-sm' href='?loeschen=$row[eventID]' onclick='return loeschNachfrage()'>Löschen</a> 
+                            <a class='btn btn-warning btn-sm' href='edit-event.php?eventID=$row[eventID]'>Bearbeiten</a>
+                            <a class='btn btn-primary btn-sm' href='event-details.php?eventID=$row[eventID]'>Details</a>
+                            </p>
                         </div>
                     </div>
                     ";

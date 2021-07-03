@@ -10,10 +10,24 @@
                     <a class="nav-link" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="event-list.php">Alle Events</a>
+                    <a class="nav-link" href="event-list.php">Eventliste</a>
                 </li>
+
+                <?php if (isset($_SESSION["userID"])) {
+                    echo "<li class='nav-item'><a class='nav-link' href='editor-overview.php'>Redaktionsübersicht</a></li>";
+                    echo "<li class='nav-item'><a class='nav-link' href='create-event.php'>Event erstellen</a></li>";
+                }
+                ?>
+
             </ul>
-            <a class='btn btn-warning mx-1' href='register.php'>Registrieren</a><a class='btn btn-primary' href='logout.php' type='submit'>Login</a>
+            <?php if (isset($_SESSION["userID"])) {
+                echo "<span class='alert alert-primary'>Eingeloggt als <strong>$_SESSION[userName]</strong><a class='btn btn-danger mx-1' href='logout.php'>Logout</a></span>";
+            }
+            ?>
+            <?php if (empty($_SESSION["userID"])) {
+                echo "<a class='btn btn-warning mx-1' href='register.php'>Registrieren</a><a class='btn btn-primary' href='login.php'>Login</a>";
+            }
+            ?>
         </div>
     </div>
 </nav>

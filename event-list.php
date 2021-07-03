@@ -1,4 +1,7 @@
 <?php
+session_start();
+session_regenerate_id(true);
+
 require_once "include/include_db.php";
 $eventMonate = ["Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
 $dateToday = date("Y-m-d");
@@ -169,8 +172,11 @@ require_once "include/include_head.php";
                     echo "<p>Am <strong>$eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]</strong></p>";
                 }
 
-                echo "
-                    <p><a href='event-details.php?eventID=$row[eventID]' class='btn btn-primary btn-sm'>Details</a></p>
+                echo "<p><a href='event-details.php?eventID=$row[eventID]' class='btn btn-primary btn-sm'>Details</a>";
+                if (isset($_SESSION["userID"])) {
+                    echo "<a class='btn btn-warning btn-sm mx-1' href='edit-event.php?eventID=$row[eventID]'>Bearbeiten</a>";
+                }
+                echo "</p>
                 </div>
             </div>
             ";

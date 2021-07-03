@@ -1,4 +1,7 @@
 <?php
+session_start();
+session_regenerate_id(true);
+
 require_once "include/include_db.php";
 $dateToday = date("Y-m-d");
 require_once "include/include_head.php";

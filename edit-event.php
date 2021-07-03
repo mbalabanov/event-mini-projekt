@@ -76,12 +76,6 @@ if (isset($_POST["speichern"])) {
 
         <?php require_once "include/include_nav.php"; ?>
 
-        <div class="row mt-2">
-            <div class="col-12 text-end">
-                <span class="alert alert-primary">Eingeloggt als <strong><?php echo $_SESSION["userName"]; ?></strong><a class='btn btn-danger mx-1' href='logout.php' type='submit'>Logout</a></span>
-            </div>
-        </div>
-
         <?php
 
         $sql = "SELECT * FROM event 
@@ -102,7 +96,7 @@ if (isset($_POST["speichern"])) {
         $eventEndDatumExplodedMonat = $eventEndDatumExploded[1];
         $eventEndDatumExplodedJahr = $eventEndDatumExploded[0];
 
-        echo "<h2  class='fw-light'>Event <strong>$row[eventName]</strong> bearbeiten</h2>";
+        echo "<h2  class='fw-light mt-2'>Event <strong>$row[eventName]</strong> bearbeiten</h2>";
         echo $successMessage;
         ?>
 
@@ -278,6 +272,7 @@ if (isset($_POST["speichern"])) {
                 <div class="col-md-12">
                     <input type="submit" name="speichern" class="btn btn-primary" value="Event speichern">
                     <a href="editor-overview.php" class="btn btn-secondary">Zum Redaktionsbereich</a>
+                    <a href="event-list.php" class="btn btn-secondary">Zur Eventliste</a>
                 </div>
             </div>
         </form>

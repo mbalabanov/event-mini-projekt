@@ -79,14 +79,8 @@ if (isset($_GET["loeschen"])) {
 	<main class="container bg-white p-2">
 
     <?php require_once "include/include_nav.php"; ?>
-
-        <div class="row mt-2">
-            <div class="col-12 text-end">
-                <span class="alert alert-primary">Eingeloggt als <strong><?php echo $_SESSION["userName"]; ?></strong><a class='btn btn-danger mx-1' href='logout.php' type='submit'>Logout</a></span>
-            </div>
-        </div>
         
-        <div class="row">
+        <div class="row mt-2">
             <div class="col-md-12">
                 <h2 class="fw-light">Neuen Event Erstellen</h2>
             </div>

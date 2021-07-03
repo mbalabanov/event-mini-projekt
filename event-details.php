@@ -1,4 +1,6 @@
 <?php
+session_start();
+session_regenerate_id(true);
 require_once "include/include_db.php";
 
 if (isset($_REQUEST["eventID"])) {
@@ -62,7 +64,12 @@ if (!isset($_REQUEST["eventID"])) {
                 echo "<strong>Ende: </strong>$eventEndDatumExplodedTag. $eventMonate[$endMonatsIndex] $eventEndDatumExplodedJahr</p>";
                 echo "<p><strong>Beschreibung:</strong><br/>$row[eventBeschreibung]</p>";
                 ?>
-                <a href="event-list.php" class="btn btn-primary">Zur Event-Liste</a>
+                <a href="event-list.php" class="btn btn-primary">Zur Eventliste</a>
+                <?php if (isset($_SESSION["userID"])) {
+                    echo "<a class='btn btn-warning mx-1' href='edit-event.php?eventID=$row[eventID]'>Event bearbeiten</a>";
+                    echo "<a class='btn btn-secondary' href='editor-overview.php'>Zur Redaktionsübersicht</a>";
+                }
+                ?>
             </div>
         </div>
     </main>
