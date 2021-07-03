@@ -43,9 +43,13 @@ require_once "include/include_head.php";
             $eventDatumJahr = trim(strip_tags($_POST["eventDatumJahr"]));
             if ($eventDatumTag < 10) {
                 $eventDatumTagZweistellig = "0" . $eventDatumTag;
+            } else {
+                $eventDatumTagZweistellig = $eventDatumTag;
             };
             if ($eventDatumMonat < 10) {
                 $eventDatumMonatZweistellig = "0" . $eventDatumMonat;
+            } else {
+                $eventDatumMonatZweistellig = $eventDatumMonat;
             };
             $completeEventDatum = $eventDatumJahr . "-" . $eventDatumMonatZweistellig . "-" . $eventDatumTagZweistellig;
 

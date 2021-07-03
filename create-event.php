@@ -5,12 +5,27 @@ if (empty($_SESSION["userID"])) {
     header("location:logout.php");
 }
 
+$uploadedImage = "default.jpg";
+$imageFolder = "img";
+$imagePath = __DIR__;
+
 require_once "include/include_db.php";
 
 // Neuen Event in DB einfügen
 if (isset($_POST["senden"])) {
     $eventName = trim(strip_tags($_POST["eventName"]));
 
+    // Wurde ein Bild ausgewählt
+    $dateiname = $_FILES["imageFile"]["name"];
+
+    if ($_FILES["imageFile"]["name"] !== "") {
+        $endung = @end(explode(".", $dateiname));
+        $uploadedImage = rand(0, 100) . time() . "." . strtolower($endung);
+        move_uploaded_file(
+            $_FILES["imageFile"]["tmp_name"],
+            "$imagePath/$imageFolder/$uploadedImage"
+        );
+    }
     $eventStartDatumTag = (int)trim(strip_tags($_POST["startDatumTag"]));
     $eventStartDatumMonat = (int)trim(strip_tags($_POST["startDatumMonat"]));
     $eventStartDatumJahr = (int)trim(strip_tags($_POST["startDatumJahr"]));
@@ -41,9 +56,9 @@ if (isset($_POST["senden"])) {
     $eventBeschreibung = trim(strip_tags($_POST["eventBeschreibung"]));
 
     $sql = "INSERT INTO event
-    (eventName,eventStartDatum,eventEndDatum,eventKategorie,eventBundesland,eventBeschreibung)
+    (eventName,eventStartDatum,eventEndDatum,eventKategorie,eventBundesland,eventBeschreibung,eventBild)
     VALUES
-    (:eventName,:eventStartDatum,:eventEndDatum,:eventKategorie,:eventBundesland,:eventBeschreibung)
+    (:eventName,:eventStartDatum,:eventEndDatum,:eventKategorie,:eventBundesland,:eventBeschreibung,:eventBild)
     ";
 
     $stmt = $db->prepare($sql);
@@ -53,6 +68,7 @@ if (isset($_POST["senden"])) {
     $stmt->bindParam(":eventKategorie", $eventKategorie);
     $stmt->bindParam(":eventBundesland", $eventBundesland);
     $stmt->bindParam(":eventBeschreibung", $eventBeschreibung);
+    $stmt->bindParam(":eventBild", $uploadedImage);
     $stmt->execute();
 
     header("location:editor-overview.php");
@@ -76,26 +92,26 @@ if (isset($_GET["loeschen"])) {
 <?php require_once "include/include_head.php"; ?>
 
 <body class="alert-primary">
-	<main class="container bg-white p-2">
+    <main class="container bg-white p-2">
 
-    <?php require_once "include/include_nav.php"; ?>
-        
+        <?php require_once "include/include_nav.php"; ?>
+
         <div class="row mt-2">
             <div class="col-md-12">
                 <h2 class="fw-light">Neuen Event Erstellen</h2>
             </div>
         </div>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="p-4 alert alert-secondary">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"  enctype="multipart/form-data" class="p-4 alert alert-secondary">
 
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="eventNameInput" class="form-label">Event Name</label>
                             <input type="text" name="eventName" class="form-control" id="eventNameInput" required><br>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <?php
                             $eventKategorien = ["Ballett", "Klassikkonzert", "Kunstausstellung", "Musical", "Oper", "Operette", "Rave", "Rockkonzert"];
                             $eventMonate = ["Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
@@ -109,15 +125,19 @@ if (isset($_GET["loeschen"])) {
                             echo "</select>";
 
                             echo "</div>";
-                            echo "<div class='col-md-4'>";
+                            echo "<div class='col-md-3'>";
 
                             echo "<label for='bundeslandInput' class='form-label'>Bundesland</label>";
                             echo "<select name='eventBundesland' id='bundeslandInput' class='form-select'>";
                             foreach ($eventBundeslaender as $eventBundesland) {
                                 echo "<option value='$eventBundesland'>$eventBundesland</option>";
                             }
-                            echo "</select>";
+                            echo "</select></div>";
                             ?>
+                            <div class="col-md-3">
+                                <label for="imageFile" class="form-label">Bild Datei</label>
+                                <input class="form-control" type="file" name="imageFile" id="imageFile">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -159,7 +179,9 @@ if (isset($_GET["loeschen"])) {
                                 $futureYear = (int)$currentYear + 10;
                                 for ($yearIterator = $pastYear; $yearIterator <= $futureYear; $yearIterator++) {
                                     $selected = "";
-                                    if($currentYear == $yearIterator) { $selected = "selected"; };
+                                    if ($currentYear == $yearIterator) {
+                                        $selected = "selected";
+                                    };
                                     echo "<option value='$yearIterator' $selected>$yearIterator</option>";
                                 }
                                 ?>
@@ -201,7 +223,9 @@ if (isset($_GET["loeschen"])) {
                                 $futureYear = (int)$currentYear + 10;
                                 for ($yearIterator = $pastYear; $yearIterator <= $futureYear; $yearIterator++) {
                                     $selected = "";
-                                    if($currentYear == $yearIterator) { $selected = "selected"; };
+                                    if ($currentYear == $yearIterator) {
+                                        $selected = "selected";
+                                    };
                                     echo "<option value='$yearIterator' $selected>$yearIterator</option>";
                                 }
                                 ?>
@@ -219,7 +243,7 @@ if (isset($_GET["loeschen"])) {
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <textarea name="eventBeschreibung" id="BeschreibungInput" class='form-control'  rows="6"></textarea>
+                            <textarea name="eventBeschreibung" id="BeschreibungInput" class='form-control' rows="6"></textarea>
                         </div>
                     </div>
                 </div>
@@ -234,6 +258,6 @@ if (isset($_GET["loeschen"])) {
         </form>
     </main>
 
-<?php
-require_once "include/include_footer.php";
-?>
+    <?php
+    require_once "include/include_footer.php";
+    ?>
