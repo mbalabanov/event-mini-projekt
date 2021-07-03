@@ -59,7 +59,7 @@ $dateToday = date("Y-m-d");
             </div>
         </div>
 
-        <form method="post" action="event-list.php" class="p-4 mt-5 alert alert-secondary">
+        <form method="post" action="event-list.php" class="p-4 mt-5 alert alert-warning">
             <div class='row'>
                 <div class='col-12 text-center'>
                     <h3 class='fw-light'>Eventsuche</h2>

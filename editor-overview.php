@@ -1,4 +1,9 @@
 <?php
+session_start();
+session_regenerate_id(true);
+if (empty($_SESSION["userID"])) {
+    header("location:login.php");
+}
 require_once "include/include_db.php";
 require_once "include/include_head.php";
 
@@ -53,11 +58,27 @@ if (isset($_GET["loeschen"])) {
                 $eventStartMonatNumerisch = (int)$eventStartDatumExploded[1];
                 $eventEndMonatNumerisch = (int)$eventEndDatumExploded[1];
 
+                if ( $eventStartMonatNumerisch - 1 >= 0) {
+                    $eventStartMonatNumerisch = $eventStartMonatNumerisch - 1;
+                } else {
+                    $eventStartMonatNumerisch = 0;
+                }
+                if ( $eventEndMonatNumerisch - 1 >= 0) {
+                    $eventEndMonatNumerisch = $eventEndMonatNumerisch - 1;
+                } else {
+                    $eventEndMonatNumerisch = 0;
+                }
+
+                if ( $eventStartDatumExploded != $eventEndDatumExploded && $eventEndDatumExploded[0] != "0000")
+                {
+                    echo "<p>Startet am <strong>$eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]</strong><br/>und läuft bis <strong>$eventEndDatumExploded[2]. $eventMonate[$eventEndMonatNumerisch] $eventEndDatumExploded[0]</strong></p>";
+                } else {
+                    echo "<p>Am <strong>$eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]</strong></p>";
+                }
+
                 echo "
-                            <p><strong>Start:</strong> $eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]<br/><strong>Ende:</strong> $eventEndDatumExploded[2]. $eventMonate[$eventEndMonatNumerisch] $eventEndDatumExploded[0]</p> 
                             <p><a class='btn btn-danger btn-sm' href='?loeschen=$row[eventID]' onclick='return loeschNachfrage()'>Löschen</a> 
-                            <a class='btn btn-warning btn-sm' href='edit-event.php?eventID=$row[eventID]'>Bearbeiten</a>
-                            <a href='event-details.php?eventID=$row[eventID]' class='btn btn-primary btn-sm'>Details</a></p>
+                            <a class='btn btn-warning btn-sm' href='edit-event.php?eventID=$row[eventID]'>Bearbeiten</a></p>
                         </div>
                     </div>
                     ";

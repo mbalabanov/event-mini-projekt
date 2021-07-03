@@ -1,13 +1,18 @@
 <?php
 require_once "include/include_db.php";
-$dateToday = date("Y-m-d");
-$dateTodayExploded = explode("-", $dateToday);
-$dateTodayExplodedTag = (int)$dateTodayExploded[2];
-$dateTodayExplodedMonat = (int)$dateTodayExploded[1];
-$dateTodayExplodedJahr = (int)$dateTodayExploded[0];
-$eventName = "%";
-$completeEventDatum = $dateTodayExplodedJahr . "-" . $dateTodayExplodedMonat . "-" . $dateTodayExplodedTag;
 $eventMonate = ["Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+$dateToday = date("Y-m-d");
+
+$dateTodayExploded = explode("-", $dateToday);
+$eventDatumTag = $dateTodayExploded[2];
+$eventDatumMonat = $dateTodayExploded[1];
+$eventDatumJahr = $dateTodayExploded[0];
+$eventName = "%";
+$completeEventDatum = $eventDatumJahr . "-" . $eventDatumMonat . "-" . $eventDatumTag;
+
+$eventDatumTag = (int)$eventDatumTag;
+$eventDatumMonat = (int)$eventDatumMonat;
+$eventDatumJahr = (int)$eventDatumJahr;
 
 require_once "include/include_head.php";
 ?>
@@ -25,11 +30,41 @@ require_once "include/include_head.php";
             </div>
         </div>
 
-        <form method="post" class="p-4 alert alert-secondary">
+        <?php
+
+        if (isset($_POST["suchen"])) {
+            $eventName = trim(strip_tags($_POST["eventName"]));
+            $eventName = $eventName . "%";
+            $eventDatumTag = trim(strip_tags($_POST["eventDatumTag"]));
+            $eventDatumMonat = trim(strip_tags($_POST["eventDatumMonat"]));
+            $eventDatumJahr = trim(strip_tags($_POST["eventDatumJahr"]));
+            if ($eventDatumTag < 10) {
+                $eventDatumTagZweistellig = "0" . $eventDatumTag;
+            };
+            if ($eventDatumMonat < 10) {
+                $eventDatumMonatZweistellig = "0" . $eventDatumMonat;
+            };
+            $completeEventDatum = $eventDatumJahr . "-" . $eventDatumMonatZweistellig . "-" . $eventDatumTagZweistellig;
+
+            $eventDatumTag = (int)$eventDatumTag;
+            $eventDatumMonat = (int)$eventDatumMonat;
+            $eventDatumJahr = (int)$eventDatumJahr;
+
+            echo "<div class='row'>
+                        <div class='col-12 text-center'>
+                            <h4 class='fw-light'>Suchbegriff '" . substr($eventName, 0, -1) . "', ab dem Datum " . $eventDatumTag . ". " . $eventDatumMonat . ". " . $eventDatumJahr . "</h4>
+                        </div>
+                    </div>";
+        }
+        ?>
+
+        <form method="post" class="p-4 alert alert-warning">
             <div class="row">
                 <div class="col-md-3">
                     <label for="eventName" class="form-label">Suche nach Name</label>
-                    <input type="text" name="eventName" id="eventName" class="form-control"><br>
+                    <?php
+                            echo "<input type='text' name='eventName' id='eventName' class='form-control' value='" . substr($eventName, 0, -1) . "'><br>";
+                    ?>
                 </div>
                 <div class="col-md-7">
                     <div class="row">
@@ -43,7 +78,7 @@ require_once "include/include_head.php";
                                 <?php
                                 for ($nummerTag = 1; $nummerTag <= 31; $nummerTag++) {
                                     $selected = "";
-                                    if ($dateTodayExplodedTag == $nummerTag) {
+                                    if ($eventDatumTag == $nummerTag) {
                                         $selected = "selected";
                                     }
                                     echo "<option value='$nummerTag' $selected>$nummerTag</option>";
@@ -54,13 +89,13 @@ require_once "include/include_head.php";
                         <div class="col-md-6">
                             <select name='eventDatumMonat' class='form-select'>
                                 <?php
-                                foreach ($eventMonate as $monatsNummer => $monatName) {
+                                foreach ($eventMonate as $monatsNummer => $monatsName) {
                                     $selected = "";
                                     $eigentlicheMonatsnummer = $monatsNummer + 1;
-                                    if ($dateTodayExplodedMonat == $eigentlicheMonatsnummer) {
+                                    if ($eventDatumMonat == $eigentlicheMonatsnummer) {
                                         $selected = "selected";
                                     }
-                                    echo "<option value='$eigentlicheMonatsnummer' $selected>$monatName</option>";
+                                    echo "<option value='$eigentlicheMonatsnummer' $selected>$monatsName</option>";
                                 }
                                 ?>
                             </select>
@@ -73,7 +108,7 @@ require_once "include/include_head.php";
                                 $futureYear = (int)$currentYear + 10;
                                 for ($yearIterator = $pastYear; $yearIterator <= $futureYear; $yearIterator++) {
                                     $selected = "";
-                                    if ($dateTodayExplodedJahr == $yearIterator) {
+                                    if ($eventDatumJahr == $yearIterator) {
                                         $selected = "selected";
                                     };
                                     echo "<option value='$yearIterator' $selected>$yearIterator</option>";
@@ -91,28 +126,6 @@ require_once "include/include_head.php";
 
         <div class="row p-2 mt-2">
             <?php
-
-            if (isset($_POST["suchen"])) {
-                $eventName = trim(strip_tags($_POST["eventName"]));
-                $eventName = $eventName . "%";
-                $eventDatumTag = trim(strip_tags($_POST["eventDatumTag"]));
-                if ($eventDatumTag < 10) {
-                    $eventDatumTag = "0" . $eventDatumTag;
-                };
-                $eventDatumMonat = trim(strip_tags($_POST["eventDatumMonat"]));
-                if ($eventDatumMonat < 10) {
-                    $eventDatumMonat = "0" . $eventDatumMonat;
-                };
-                $eventDatumJahr = trim(strip_tags($_POST["eventDatumJahr"]));
-                $completeEventDatum = $eventDatumJahr . "-" . $eventDatumMonat . "-" . $eventDatumTag;
-
-                echo "<div class='row'>
-                        <div class='col-12 text-center'>
-                            <h4 class='fw-light'>Suchbegriff '" . substr($eventName, 0, -1) . "', ab dem Datum " . $eventDatumTag . ". " . $eventDatumMonat . ". " . $eventDatumJahr . "</h4>
-                        </div>
-                    </div>";
-            }
-
             $sql = "SELECT *
                     FROM event 
                     WHERE eventStartDatum >= :eventDatum
@@ -120,18 +133,17 @@ require_once "include/include_head.php";
                     ORDER BY eventStartDatum ASC";
 
             $stmt = $db->prepare($sql);
-            $stmt->bindParam(":eventDatum", $completeEventDatum);
+            $correctEventDate = date("Y-m-d", strtotime($completeEventDatum));
+            $stmt->bindParam(":eventDatum", $correctEventDate);
             $stmt->bindParam(":eventName", $eventName);
             $stmt->execute();
 
             while ($row =  $stmt->fetch()) {
-                echo "
-            <div class='col-md-4 my-2 p-1'>
-                <div class='border rounded bg-light p-3 text-center'>
-                    <h4 class='fw-light'><a href='event-details.php?eventID=$row[eventID]' class='text-decoration-none'>$row[eventName]</a></h4>
-                    <p><a href='event-details.php?eventID=$row[eventID]'><img src='img/$row[eventBild]' alt='$row[eventName]' class='img-fluid rounded'/></a></p>
-                    <h5 class='fw-light'>$row[eventKategorie] in $row[eventBundesland]</h5>
-            ";
+                echo "<div class='col-md-4 my-2 p-1'>
+                    <div class='border rounded bg-light p-3 text-center'>
+                        <h4 class='fw-light'><a href='event-details.php?eventID=$row[eventID]' class='text-decoration-none'>$row[eventName]</a></h4>
+                        <p><a href='event-details.php?eventID=$row[eventID]'><img src='img/$row[eventBild]' alt='$row[eventName]' class='img-fluid rounded'/></a></p>
+                        <h5 class='fw-light'>$row[eventKategorie] in $row[eventBundesland]</h5>";
 
                 $eventStartDatumExploded = explode("-", $row["eventStartDatum"]);
                 $eventEndDatumExploded = explode("-", $row["eventEndDatum"]);
@@ -139,8 +151,25 @@ require_once "include/include_head.php";
                 $eventStartMonatNumerisch = (int)$eventStartDatumExploded[1];
                 $eventEndMonatNumerisch = (int)$eventEndDatumExploded[1];
 
+                if ( $eventStartMonatNumerisch - 1 >= 0) {
+                    $eventStartMonatNumerisch = $eventStartMonatNumerisch - 1;
+                } else {
+                    $eventStartMonatNumerisch = 0;
+                }
+                if ( $eventEndMonatNumerisch - 1 >= 0) {
+                    $eventEndMonatNumerisch = $eventEndMonatNumerisch - 1;
+                } else {
+                    $eventEndMonatNumerisch = 0;
+                }
+
+                if ( $eventStartDatumExploded != $eventEndDatumExploded && $eventEndDatumExploded[0] != "0000")
+                {
+                    echo "<p>Startet am <strong>$eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]</strong><br/>und läuft bis <strong>$eventEndDatumExploded[2]. $eventMonate[$eventEndMonatNumerisch] $eventEndDatumExploded[0]</strong></p>";
+                } else {
+                    echo "<p>Am <strong>$eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]</strong></p>";
+                }
+
                 echo "
-                    <p><strong>Start:</strong> $eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]<br/><strong>Ende:</strong> $eventEndDatumExploded[2]. $eventMonate[$eventEndMonatNumerisch] $eventEndDatumExploded[0]</p> 
                     <p><a href='event-details.php?eventID=$row[eventID]' class='btn btn-primary btn-sm'>Details</a></p>
                 </div>
             </div>

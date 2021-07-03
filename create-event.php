@@ -1,4 +1,9 @@
 <?php
+session_start();
+session_regenerate_id(true);
+if (empty($_SESSION["userID"])) {
+    header("location:login.php");
+}
 require_once "include/include_db.php";
 require_once "include/include_head.php";
 

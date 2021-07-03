@@ -1,13 +1,14 @@
 <?php
-session_start();
-session_regenerate_id(true);
+if(isset($_SESSION["userID"]))
+{
+    session_destroy();
+    unset($_SESSION["userID"]);
+};
 require_once "include/include_db.php";
 require_once "include/include_head.php";
 
-//Wenn Form gesendet...
 if (isset($_POST["einloggen"])) {
     if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) !== false) {
-        //Prüfen, ob Email existiert
         $sql = "SELECT * FROM user
         WHERE userEmail = :email";
 
@@ -15,14 +16,12 @@ if (isset($_POST["einloggen"])) {
         $stmt->bindParam(":email", $_POST["email"]);
         $stmt->execute();
         $row = $stmt->fetch();
-        //Erst wenn user gefunden wurde, wird das PW abgeglichen
+
         if ($row !== false) {
             if (password_verify($_POST["password"], $row["userPassword"])) {
-                //User erkannt!!!
                 $_SESSION["userID"] = $row["userID"];
                 $_SESSION["userName"] = $row["userName"];
                 $_SESSION["userRole"] = $row["userRole"];
-                //Weiterleiten
                 header("location:editor-overview.php");
             }
         }
@@ -41,7 +40,7 @@ if (isset($_POST["einloggen"])) {
         <div class="row mt-5">
             <div class="col-md-12 text-center">
                 <h2 class="fw-light">Einloggen</h2>
-                <p>Einloggen mit folgendem Test-Account: eventuser, user@event.com, Test1234</p>
+                <p>Einloggen mit folgendem Test-Account: user@event.com, Test1234</p>
             </div>
         </div>
 
