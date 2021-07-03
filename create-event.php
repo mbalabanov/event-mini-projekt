@@ -8,18 +8,18 @@ if (empty($_SESSION["userID"])) {
 $uploadedImage = "default.jpg";
 $imageFolder = "img";
 $imagePath = __DIR__;
+$fileName = "";
 
 require_once "include/include_db.php";
 
-// Neuen Event in DB einfügen
 if (isset($_POST["senden"])) {
     $eventName = trim(strip_tags($_POST["eventName"]));
 
-    // Wurde ein Bild ausgewählt
-    $dateiname = $_FILES["imageFile"]["name"];
+    $fileName = $_FILES["imageFile"]["name"];
 
     if ($_FILES["imageFile"]["name"] !== "") {
-        $endung = @end(explode(".", $dateiname));
+
+        $endung = @end(explode(".", $fileName));
         $uploadedImage = rand(0, 100) . time() . "." . strtolower($endung);
         move_uploaded_file(
             $_FILES["imageFile"]["tmp_name"],
@@ -102,7 +102,7 @@ if (isset($_GET["loeschen"])) {
             </div>
         </div>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"  enctype="multipart/form-data" class="p-4 alert alert-secondary">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data" class="p-4 alert alert-secondary">
 
             <div class="row">
                 <div class="col-md-12">
@@ -141,120 +141,119 @@ if (isset($_GET["loeschen"])) {
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
 
-                    <div class="row mt-2">
-                        <div class="col-md-12">
-                            <label for="eventStartDatumSelect" class="form-label">Startdatum</label>
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <label for="eventStartDatumSelect" class="form-label">Startdatum</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <select name='startDatumTag' id="eventStartDatumSelect" class='form-select'>
-                                <?php
-                                for ($nummerTag = 1; $nummerTag <= 31; $nummerTag++) {
-                                    echo "<option value='$nummerTag'>$nummerTag</option>";
-                                }
-                                ?>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <select name='startDatumTag' id="eventStartDatumSelect" class='form-select'>
+                                    <?php
+                                    for ($nummerTag = 1; $nummerTag <= 31; $nummerTag++) {
+                                        echo "<option value='$nummerTag'>$nummerTag</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select name='startDatumMonat' class='form-select'>
+                                    <?php
+                                    foreach ($eventMonate as $monatsNummer => $monatName) {
+                                        $eigentlicheMonatsnummer = $monatsNummer + 1;
+                                        echo "<option value='" . $eigentlicheMonatsnummer . "'>$monatName</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select name='startDatumJahr' class='form-select'>
+                                    <?php
+                                    $currentYear = (int)date("Y");
+                                    $pastYear = $currentYear - 10;
+                                    $futureYear = (int)$currentYear + 10;
+                                    for ($yearIterator = $pastYear; $yearIterator <= $futureYear; $yearIterator++) {
+                                        $selected = "";
+                                        if ($currentYear == $yearIterator) {
+                                            $selected = "selected";
+                                        };
+                                        echo "<option value='$yearIterator' $selected>$yearIterator</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <select name='startDatumMonat' class='form-select'>
-                                <?php
-                                foreach ($eventMonate as $monatsNummer => $monatName) {
-                                    $eigentlicheMonatsnummer = $monatsNummer + 1;
-                                    echo "<option value='" . $eigentlicheMonatsnummer . "'>$monatName</option>";
-                                }
-                                ?>
-                            </select>
+
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <label for="eventEndDatumSelect" class="form-label">Enddatum</label>
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <select name='startDatumJahr' class='form-select'>
-                                <?php
-                                $currentYear = (int)date("Y");
-                                $pastYear = $currentYear - 10;
-                                $futureYear = (int)$currentYear + 10;
-                                for ($yearIterator = $pastYear; $yearIterator <= $futureYear; $yearIterator++) {
-                                    $selected = "";
-                                    if ($currentYear == $yearIterator) {
-                                        $selected = "selected";
+
+                        <div class="row mt-2">
+                            <div class="col-md-2">
+                                <select name="endDatumTag" id="eventEndDatumSelect" class='form-select'>
+                                    <?php
+                                    for ($nummerEndTag = 1; $nummerEndTag <= 31; $nummerEndTag++) {
+                                        echo "<option value='" . $nummerEndTag . "'>" . $nummerEndTag . "</option>";
                                     };
-                                    echo "<option value='$yearIterator' $selected>$yearIterator</option>";
-                                }
-                                ?>
-                            </select>
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select name='endDatumMonat' class='form-select'>
+                                    <?php
+                                    foreach ($eventMonate as $monatsNummer => $monatName) {
+                                        $eigentlicheMonatsnummer = $monatsNummer + 1;
+                                        echo "<option value='" . $eigentlicheMonatsnummer . "'>$monatName</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select name='endDatumJahr' class='form-select'>
+                                    <?php
+                                    $currentYear = (int)date("Y");
+                                    $pastYear = $currentYear - 10;
+                                    $futureYear = (int)$currentYear + 10;
+                                    for ($yearIterator = $pastYear; $yearIterator <= $futureYear; $yearIterator++) {
+                                        $selected = "";
+                                        if ($currentYear == $yearIterator) {
+                                            $selected = "selected";
+                                        };
+                                        echo "<option value='$yearIterator' $selected>$yearIterator</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="row mt-2">
-                        <div class="col-md-12">
-                            <label for="eventEndDatumSelect" class="form-label">Enddatum</label>
-                        </div>
-                    </div>
+                    <div class="col-md-6">
 
-                    <div class="row mt-2">
-                        <div class="col-md-2">
-                            <select name="endDatumTag" id="eventEndDatumSelect" class='form-select'>
-                                <?php
-                                for ($nummerEndTag = 1; $nummerEndTag <= 31; $nummerEndTag++) {
-                                    echo "<option value='" . $nummerEndTag . "'>" . $nummerEndTag . "</option>";
-                                };
-                                ?>
-                            </select>
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <label for="BeschreibungInput" class="form-label">Beschreibung</label>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <select name='endDatumMonat' class='form-select'>
-                                <?php
-                                foreach ($eventMonate as $monatsNummer => $monatName) {
-                                    $eigentlicheMonatsnummer = $monatsNummer + 1;
-                                    echo "<option value='" . $eigentlicheMonatsnummer . "'>$monatName</option>";
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <select name='endDatumJahr' class='form-select'>
-                                <?php
-                                $currentYear = (int)date("Y");
-                                $pastYear = $currentYear - 10;
-                                $futureYear = (int)$currentYear + 10;
-                                for ($yearIterator = $pastYear; $yearIterator <= $futureYear; $yearIterator++) {
-                                    $selected = "";
-                                    if ($currentYear == $yearIterator) {
-                                        $selected = "selected";
-                                    };
-                                    echo "<option value='$yearIterator' $selected>$yearIterator</option>";
-                                }
-                                ?>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <textarea name="eventBeschreibung" id="BeschreibungInput" class='form-control' rows="6"></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6">
-
-                    <div class="row mt-2">
-                        <div class="col-md-12">
-                            <label for="BeschreibungInput" class="form-label">Beschreibung</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <textarea name="eventBeschreibung" id="BeschreibungInput" class='form-control' rows="6"></textarea>
-                        </div>
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <input type="submit" name="senden" class="btn btn-primary" value="Event speichern">
+                        <a href="editor-overview.php" class="btn btn-secondary">Zum Redaktionsbereich</a>
                     </div>
                 </div>
-            </div>
-
-            <div class="row mt-2">
-                <div class="col-md-12">
-                    <input type="submit" name="senden" class="btn btn-primary" value="Event speichern">
-                    <a href="editor-overview.php" class="btn btn-secondary">Zum Redaktionsbereich</a>
-                </div>
-            </div>
         </form>
     </main>
 
