@@ -1,11 +1,7 @@
 <?php
-if(isset($_SESSION["userID"]))
-{
-    session_destroy();
-    unset($_SESSION["userID"]);
-};
+session_start();
+session_regenerate_id(true);
 require_once "include/include_db.php";
-require_once "include/include_head.php";
 
 if (isset($_POST["einloggen"])) {
     if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) !== false) {
@@ -22,16 +18,18 @@ if (isset($_POST["einloggen"])) {
                 $_SESSION["userID"] = $row["userID"];
                 $_SESSION["userName"] = $row["userName"];
                 $_SESSION["userRole"] = $row["userRole"];
+
                 header("location:editor-overview.php");
             }
         }
     }
 }
 
+require_once "include/include_head.php";
 ?>
 
 <body class="alert-primary">
-<main class="container bg-white p-2">
+    <main class="container bg-white p-2">
 
         <?php
         require_once "include/include_nav.php";

@@ -2,33 +2,39 @@
 session_start();
 session_regenerate_id(true);
 if (empty($_SESSION["userID"])) {
-    header("location:login.php");
+    header("location:logout.php");
 }
+
 require_once "include/include_db.php";
-require_once "include/include_head.php";
 
 // Neuen Event in DB einfügen
 if (isset($_POST["senden"])) {
     $eventName = trim(strip_tags($_POST["eventName"]));
 
-    $eventStartDatumTag = trim(strip_tags($_POST["eventStartDatumTag"]));
-    if ($eventStartDatumTag < 10)
-    {
+    $eventStartDatumTag = (int)trim(strip_tags($_POST["startDatumTag"]));
+    $eventStartDatumMonat = (int)trim(strip_tags($_POST["startDatumMonat"]));
+    $eventStartDatumJahr = (int)trim(strip_tags($_POST["startDatumJahr"]));
+
+    $eventEndDatumTag = (int)trim(strip_tags($_POST["endDatumTag"]));
+    $eventEndDatumMonat = (int)trim(strip_tags($_POST["endDatumMonat"]));
+    $eventEndDatumJahr = (int)trim(strip_tags($_POST["endDatumJahr"]));
+
+    if ($eventStartDatumTag < 10) {
         $eventStartDatumTag = "0" . $eventStartDatumTag;
     };
-    $eventStartDatumMonat = trim(strip_tags($_POST["eventStartDatumMonat"]));
-    if ($eventStartDatumMonat < 10)
-    {
+    if ($eventEndDatumTag < 10) {
+        $eventEndDatumTag = "0" . $eventEndDatumTag;
+    };
+
+    if ($eventStartDatumMonat < 10) {
         $eventStartDatumMonat = "0" . $eventStartDatumMonat;
     };
-    $eventStartDatumJahr = trim(strip_tags($_POST["eventStartDatumJahr"]));
+    if ($eventEndDatumMonat < 10) {
+        $eventEndDatumMonat = "0" . $eventEndDatumMonat;
+    };
+
     $eventStartDatum = $eventStartDatumJahr . "-" . $eventStartDatumMonat . "-" . $eventStartDatumTag;
-
-    $eventEndDatumTag = trim(strip_tags($_POST["eventEndDatumTag"]));
-    $eventEndDatumMonat = trim(strip_tags($_POST["eventEndDatumMonat"]));
-    $eventEndDatumJahr = trim(strip_tags($_POST["eventEndDatumJahr"]));
     $eventEndDatum = $eventEndDatumJahr . "-" . $eventEndDatumMonat . "-" . $eventEndDatumTag;
-
 
     $eventKategorie = trim(strip_tags($_POST["eventKategorie"]));
     $eventBundesland = trim(strip_tags($_POST["eventBundesland"]));
@@ -49,7 +55,7 @@ if (isset($_POST["senden"])) {
     $stmt->bindParam(":eventBeschreibung", $eventBeschreibung);
     $stmt->execute();
 
-    header("location:$_SERVER[PHP_SELF]");
+    header("location:editor-overview.php");
 }
 
 // Bestehenden Event aus DB löschen
@@ -67,13 +73,20 @@ if (isset($_GET["loeschen"])) {
 
 ?>
 
+<?php require_once "include/include_head.php"; ?>
+
 <body class="alert-primary">
 	<main class="container bg-white p-2">
 
-        <?php
-        require_once "include/include_nav.php";
-        ?>
+    <?php require_once "include/include_nav.php"; ?>
+
         <div class="row mt-2">
+            <div class="col-12 text-end">
+                <span class="alert alert-primary">Eingeloggt als <strong><?php echo $_SESSION["userName"]; ?></strong><a class='btn btn-danger mx-1' href='logout.php' type='submit'>Logout</a></span>
+            </div>
+        </div>
+        
+        <div class="row">
             <div class="col-md-12">
                 <h2 class="fw-light">Neuen Event Erstellen</h2>
             </div>
@@ -137,9 +150,9 @@ if (isset($_GET["loeschen"])) {
                         <div class="col-md-6">
                             <select name='startDatumMonat' class='form-select'>
                                 <?php
-                                foreach ($eventMonate as $monatsEndNummer => $monatEndName) {
+                                foreach ($eventMonate as $monatsNummer => $monatName) {
                                     $eigentlicheMonatsnummer = $monatsNummer + 1;
-                                    echo "<option value='" . $eigentlicheMonatsnummer . "'>$monatEndName</option>";
+                                    echo "<option value='" . $eigentlicheMonatsnummer . "'>$monatName</option>";
                                 }
                                 ?>
                             </select>
@@ -179,9 +192,9 @@ if (isset($_GET["loeschen"])) {
                         <div class="col-md-6">
                             <select name='endDatumMonat' class='form-select'>
                                 <?php
-                                foreach ($eventMonate as $monatsEndNummer => $monatEndName) {
+                                foreach ($eventMonate as $monatsNummer => $monatName) {
                                     $eigentlicheMonatsnummer = $monatsNummer + 1;
-                                    echo "<option value='" . $eigentlicheMonatsnummer . "'>$monatEndName</option>";
+                                    echo "<option value='" . $eigentlicheMonatsnummer . "'>$monatName</option>";
                                 }
                                 ?>
                             </select>

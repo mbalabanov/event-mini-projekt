@@ -1,6 +1,5 @@
 <?php
 require_once "include/include_db.php";
-require_once "include/include_head.php";
 
 if (isset($_REQUEST["eventID"])) {
     $eventID = (int)$_REQUEST["eventID"];
@@ -12,6 +11,8 @@ if (!isset($_REQUEST["eventID"])) {
 }
 
 ?>
+
+<?php require_once "include/include_head.php"; ?>
 
 <body class="alert-primary">
     <main class="container bg-white p-2">

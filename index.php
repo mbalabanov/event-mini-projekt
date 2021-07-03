@@ -1,7 +1,7 @@
 <?php
 require_once "include/include_db.php";
-require_once "include/include_head.php";
 $dateToday = date("Y-m-d");
+require_once "include/include_head.php";
 ?>
 
 <body class="alert-primary">

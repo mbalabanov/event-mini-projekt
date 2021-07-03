@@ -2,7 +2,7 @@
 session_start();
 session_regenerate_id(true);
 if (empty($_SESSION["userID"])) {
-    header("location:login.php");
+    header("location:logout.php");
 }
 require_once "include/include_db.php";
 require_once "include/include_head.php";
@@ -69,11 +69,20 @@ if (isset($_POST["speichern"])) {
 
 ?>
 
+<?php require_once "include/include_head.php"; ?>
+
 <body class="alert-primary">
     <main class="container bg-white p-2">
 
+        <?php require_once "include/include_nav.php"; ?>
+
+        <div class="row mt-2">
+            <div class="col-12 text-end">
+                <span class="alert alert-primary">Eingeloggt als <strong><?php echo $_SESSION["userName"]; ?></strong><a class='btn btn-danger mx-1' href='logout.php' type='submit'>Logout</a></span>
+            </div>
+        </div>
+
         <?php
-        require_once "include/include_nav.php";
 
         $sql = "SELECT * FROM event 
         WHERE eventID=:eventID";
@@ -93,7 +102,7 @@ if (isset($_POST["speichern"])) {
         $eventEndDatumExplodedMonat = $eventEndDatumExploded[1];
         $eventEndDatumExplodedJahr = $eventEndDatumExploded[0];
 
-        echo "<h2  class='fw-light'>Event bearbeiten: $row[eventName]</h2>";
+        echo "<h2  class='fw-light'>Event <strong>$row[eventName]</strong> bearbeiten</h2>";
         echo $successMessage;
         ?>
 

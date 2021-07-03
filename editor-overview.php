@@ -1,11 +1,12 @@
 <?php
 session_start();
 session_regenerate_id(true);
+
 if (empty($_SESSION["userID"])) {
-    header("location:login.php");
+    header("location:logout.php");
 }
+
 require_once "include/include_db.php";
-require_once "include/include_head.php";
 
 // Bestehenden Event aus DB löschen
 if (isset($_GET["loeschen"])) {
@@ -22,14 +23,20 @@ if (isset($_GET["loeschen"])) {
 
 ?>
 
+<?php require_once "include/include_head.php"; ?>
+
 <body class="alert-primary">
-<main class="container bg-white p-2">
+    <main class="container bg-white p-2">
 
-        <?php
-        require_once "include/include_nav.php";
-        ?>
+        <?php require_once "include/include_nav.php"; ?>
 
-        <div class="row mt-5">
+        <div class="row mt-2">
+            <div class="col-12 text-end">
+                <span class="alert alert-primary">Eingeloggt als <strong><?php echo $_SESSION["userName"]; ?></strong><a class='btn btn-danger mx-1' href='logout.php' type='submit'>Logout</a></span>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-12 text-center">
                 <h2 class="fw-light">Events Redaktionsbereich</h2>
                 <p><a href="create-event.php" class="btn btn-primary btn-lg">Neuen Event anlegen</a></p>
@@ -58,19 +65,18 @@ if (isset($_GET["loeschen"])) {
                 $eventStartMonatNumerisch = (int)$eventStartDatumExploded[1];
                 $eventEndMonatNumerisch = (int)$eventEndDatumExploded[1];
 
-                if ( $eventStartMonatNumerisch - 1 >= 0) {
+                if ($eventStartMonatNumerisch - 1 >= 0) {
                     $eventStartMonatNumerisch = $eventStartMonatNumerisch - 1;
                 } else {
                     $eventStartMonatNumerisch = 0;
                 }
-                if ( $eventEndMonatNumerisch - 1 >= 0) {
+                if ($eventEndMonatNumerisch - 1 >= 0) {
                     $eventEndMonatNumerisch = $eventEndMonatNumerisch - 1;
                 } else {
                     $eventEndMonatNumerisch = 0;
                 }
 
-                if ( $eventStartDatumExploded != $eventEndDatumExploded && $eventEndDatumExploded[0] != "0000")
-                {
+                if ($eventStartDatumExploded != $eventEndDatumExploded && $eventEndDatumExploded[0] != "0000") {
                     echo "<p>Startet am <strong>$eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]</strong><br/>und läuft bis <strong>$eventEndDatumExploded[2]. $eventMonate[$eventEndMonatNumerisch] $eventEndDatumExploded[0]</strong></p>";
                 } else {
                     echo "<p>Am <strong>$eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]</strong></p>";
@@ -93,6 +99,6 @@ if (isset($_GET["loeschen"])) {
         }
     </script>
 
-<?php
-require_once "include/include_footer.php";
-?>
+    <?php
+    require_once "include/include_footer.php";
+    ?>

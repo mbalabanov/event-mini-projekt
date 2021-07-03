@@ -1,5 +1,3 @@
-<?php
-?>
 <nav class="navbar navbar-expand-lg navbar-light mb-4 py-3 border-bottom border-primary">
     <div class="container-fluid">
         <a class="navbar-brand text-primary" href="index.php">EVENT KALENDAR</a>
@@ -15,12 +13,7 @@
                     <a class="nav-link" href="event-list.php">Alle Events</a>
                 </li>
             </ul>
-            <?php
-            echo "<a class='btn btn-warning mx-1' href='register.php'>Registrieren</a><a class='btn btn-primary' href='login.php' type='submit'>Login</a>";
-            if (isset($_SESSION["userID"])) {
-                echo "<a class='btn btn-danger mx-1' href='login.php' type='submit'>Logout</a>";
-            };
-            ?>
+            <a class='btn btn-warning mx-1' href='register.php'>Registrieren</a><a class='btn btn-primary' href='logout.php' type='submit'>Login</a>
         </div>
     </div>
 </nav>
