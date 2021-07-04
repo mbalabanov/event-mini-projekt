@@ -142,14 +142,12 @@ require_once "include/include_head.php";
             <?php
             $sql = "SELECT * FROM event WHERE eventStartDatum > $dateToday ORDER BY eventStartDatum ASC LIMIT 8";
             $stmt = $db->query($sql);
-            while ($row = $stmt->fetch()) {
-                echo "
-                    <div class='col-md-3 my-2 p-1'>
-                        <div class='border rounded bg-light p-3 text-center'>
-                            <h4 class='fw-light'><a href='event-details.php?eventID=$row[eventID]' class='text-decoration-none'>$row[eventName]</a></h4>
-                            <p><a href='event-details.php?eventID=$row[eventID]'><img src='img/$row[eventBild]' alt='$row[eventName]' class='img-fluid rounded'/></a></p>
-                            <h5 class='fw-light'>$row[eventKategorie] in $row[eventBundesland]</h5>
-                    ";
+            while ($row =  $stmt->fetch()) {
+                echo "<div class='col-md-4 my-2 p-1'>
+                    <div class='border rounded bg-light p-3 text-center'>
+                        <h4 class='fw-light'><a href='event-details.php?eventID=$row[eventID]' class='text-decoration-none'>$row[eventName]</a></h4>
+                        <p><a href='event-details.php?eventID=$row[eventID]'><img src='img/$row[eventBild]' alt='$row[eventName]' class='img-fluid rounded'/></a></p>
+                        <h5 class='fw-light'>$row[eventKategorie] in $row[eventBundesland]</h5>";
 
                 $eventStartDatumExploded = explode("-", $row["eventStartDatum"]);
                 $eventEndDatumExploded = explode("-", $row["eventEndDatum"]);
@@ -157,12 +155,32 @@ require_once "include/include_head.php";
                 $eventStartMonatNumerisch = (int)$eventStartDatumExploded[1];
                 $eventEndMonatNumerisch = (int)$eventEndDatumExploded[1];
 
-                echo "
-                            <p><strong>Start:</strong> $eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]<br/><strong>Ende:</strong> $eventEndDatumExploded[2]. $eventMonate[$eventEndMonatNumerisch] $eventEndDatumExploded[0]</p> 
-                            <p><a href='event-details.php?eventID=$row[eventID]' class='btn btn-primary btn-sm'>Details</a></p>
-                        </div>
-                    </div>
-                    ";
+                if ( $eventStartMonatNumerisch - 1 >= 0) {
+                    $eventStartMonatNumerisch = $eventStartMonatNumerisch - 1;
+                } else {
+                    $eventStartMonatNumerisch = 0;
+                }
+                if ( $eventEndMonatNumerisch - 1 >= 0) {
+                    $eventEndMonatNumerisch = $eventEndMonatNumerisch - 1;
+                } else {
+                    $eventEndMonatNumerisch = 0;
+                }
+
+                if ( $eventStartDatumExploded != $eventEndDatumExploded && $eventEndDatumExploded[0] != "0000")
+                {
+                    echo "<p>Startet am <strong>$eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]</strong><br/>und läuft bis <strong>$eventEndDatumExploded[2]. $eventMonate[$eventEndMonatNumerisch] $eventEndDatumExploded[0]</strong></p>";
+                } else {
+                    echo "<p>Am <strong>$eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]</strong></p>";
+                }
+
+                echo "<p><a href='event-details.php?eventID=$row[eventID]' class='btn btn-primary btn-sm'>Details</a>";
+                if (isset($_SESSION["userID"])) {
+                    echo "<a class='btn btn-warning btn-sm mx-1' href='edit-event.php?eventID=$row[eventID]'>Bearbeiten</a>";
+                }
+                echo "</p>
+                </div>
+            </div>
+            ";
             }
 
             ?>
