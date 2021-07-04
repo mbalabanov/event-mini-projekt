@@ -61,7 +61,7 @@ if (isset($_POST["speichern"])) {
     $eventStartDatum = $startDatumJahr . "-" . $startDatumMonat . "-" . $startDatumTag;
     $eventEndDatum = $endDatumJahr . "-" . $endDatumMonat . "-" . $endDatumTag;
 
-    $successMessage = "<div class='alert alert-success text-center'>Event wurde aktualisiert.";
+    $successMessage = "<div class='alert alert-success text-center'>Event wurde aktualisiert.</div>";
 
     $sql = "
     UPDATE event SET
