@@ -23,7 +23,7 @@ if (isset($_POST["speichern"])) {
 
     $fileName = $_FILES["imageFile"]["name"];
 
-    if ($_FILES["imageFile"] !== "") {
+    if ($_FILES["imageFile"]["name"] !== "") {
         $endung = @end(explode(".", $fileName));
         $uploadedImage = rand(0, 100) . time() . "." . strtolower($endung);
         move_uploaded_file(
@@ -61,7 +61,7 @@ if (isset($_POST["speichern"])) {
     $eventStartDatum = $startDatumJahr . "-" . $startDatumMonat . "-" . $startDatumTag;
     $eventEndDatum = $endDatumJahr . "-" . $endDatumMonat . "-" . $endDatumTag;
 
-    $successMessage = "<div class='alert alert-success text-center'>Event wurde aktualisiert.</div>";
+    $successMessage = "<div class='alert alert-success text-center'>Event wurde aktualisiert.";
 
     $sql = "
     UPDATE event SET
@@ -295,6 +295,7 @@ if (isset($_POST["speichern"])) {
                 <div class="row mt-2">
                     <div class="col-md-12">
                         <input type="submit" name="speichern" class="btn btn-primary" value="Event speichern">
+                        <a href='event-details.php?eventID=<?php echo $row["eventID"] ?>' class='btn btn-secondary'>Event-Details</a>
                         <a href="editor-overview.php" class="btn btn-secondary">Zum Redaktionsbereich</a>
                         <a href="event-list.php" class="btn btn-secondary">Zur Eventliste</a>
                     </div>
