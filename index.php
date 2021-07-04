@@ -151,7 +151,7 @@ require_once "include/include_head.php";
             $sql = "SELECT * FROM event WHERE eventStartDatum > $dateToday ORDER BY eventStartDatum ASC LIMIT 8";
             $stmt = $db->query($sql);
             while ($row =  $stmt->fetch()) {
-                echo "<div class='col-md-4 my-2 p-1'>
+                echo "<div class='col-md-3 my-2 p-1'>
                     <div class='border rounded bg-light p-3 text-center'>
                         <h4 class='fw-light'><a href='event-details.php?eventID=$row[eventID]' class='text-decoration-none'>$row[eventName]</a></h4>
                         <p><a href='event-details.php?eventID=$row[eventID]'><img src='img/$row[eventBild]' alt='$row[eventName]' class='img-fluid rounded'/></a></p>
