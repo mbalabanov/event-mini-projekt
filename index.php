@@ -148,7 +148,7 @@ require_once "include/include_head.php";
 
         <div class="row p-2">
             <?php
-            $sql = "SELECT * FROM event WHERE eventStartDatum > $dateToday ORDER BY eventStartDatum ASC LIMIT 8";
+            $sql = "SELECT * FROM event WHERE eventStartDatum > $dateToday ORDER BY eventStartDatum ASC LIMIT 4";
             $stmt = $db->query($sql);
             while ($row =  $stmt->fetch()) {
                 echo "<div class='col-md-3 my-2 p-1'>
