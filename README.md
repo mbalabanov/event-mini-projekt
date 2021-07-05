@@ -1,6 +1,6 @@
 # Event Mini-Projekt
 
-Dies ist ein Mini-Projekt mit einem kleinen Event-Kalender in PHP entwickelt und Styling mit Bootstrap. Der Event-Kalender kann hier ausprobiert werden: https://marincomics.com/event-mini-projekt (die Details für einen Testuser-Account werden auf der Login-Seite angeführt).
+Dies ist ein Mini-Projekt mit einem kleinen Event-Kalender in einfachem PHP entwickelt und Styling mit Bootstrap. Der Event-Kalender kann hier ausprobiert werden: https://marincomics.com/event-mini-projekt (die Details für einen Testuser-Account werden auf der Login-Seite angeführt).
 
 Ziel dieses Projekts ist die Implementierung einer einfachen Event-Plattform. Events haben folgende Felder:
 - ein Titel
