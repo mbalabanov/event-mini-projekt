@@ -80,7 +80,7 @@ require_once "include/include_head.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <select name='eventDatumTag' id="eventDatumSelect" class='form-select'>
                                 <?php
                                 for ($nummerTag = 1; $nummerTag <= 31; $nummerTag++) {
@@ -93,7 +93,7 @@ require_once "include/include_head.php";
                                 ?>
                             </select>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <select name='eventDatumMonat' class='form-select'>
                                 <?php
                                 foreach ($eventMonate as $monatsNummer => $monatsName) {

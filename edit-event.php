@@ -179,7 +179,7 @@ if (isset($_POST["speichern"])) {
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <select name='startDatumTag' id="eventStartDatumSelect" class='form-select'>
                                     <?php
                                     for ($nummerTag = 1; $nummerTag <= 31; $nummerTag++) {
@@ -192,7 +192,7 @@ if (isset($_POST["speichern"])) {
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <select name='startDatumMonat' class='form-select'>
                                     <?php
                                     foreach ($eventMonate as $monatsNummer => $monatName) {
@@ -231,7 +231,7 @@ if (isset($_POST["speichern"])) {
                         </div>
 
                         <div class="row mt-2">
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <select name="endDatumTag" id="eventEndDatumSelect" class='form-select'>
                                     <?php
                                     for ($nummerTag = 1; $nummerTag <= 31; $nummerTag++) {
@@ -244,7 +244,7 @@ if (isset($_POST["speichern"])) {
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <select name='endDatumMonat' class='form-select'>
                                     <?php
                                     foreach ($eventMonate as $monatsNummer => $monatName) {

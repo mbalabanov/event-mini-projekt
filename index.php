@@ -27,10 +27,23 @@ require_once "include/include_head.php";
         ?>
 
         <?php
-        $sql = "SELECT * FROM event WHERE eventStartDatum > $dateToday ORDER BY eventStartDatum ASC LIMIT 3";
-        $stmt = $db->query($sql);
+
+        $sqlCarousel = "SELECT * FROM event WHERE eventStartDatum >= :currentDate ORDER BY eventStartDatum ASC LIMIT 3";
+
+        $stmtCarousel = $db->prepare($sqlCarousel);
+        $stmtCarousel->bindParam(":currentDate", $dateToday);
+        $stmtCarousel->execute();
+
         $eventMonate = ["Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
         ?>
+
+        <div class="row">
+            <div class="col-12">
+                <p class=" text-center">
+                    Das ist ein Testprojekt. Den Sourcecode finden Sie hier auf GitHub:<br/><a href="https://github.com/mbalabanov/event-mini-projekt" target="_blank" class="btn btn-outline-primary btn-sm">github.com/mbalabanov/event-mini-projekt</a>
+                </p>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-12">
@@ -46,7 +59,7 @@ require_once "include/include_head.php";
 
                         $carouselIterator = 0;
                         $active = "active";
-                        while ($carouselItem = $stmt->fetch()) {
+                        while ($carouselItem = $stmtCarousel->fetch()) {
                             echo "
                                 <div class='carousel-item $active'>
                                 <a href='event-details.php?eventID=$carouselItem[eventID]'><img src='img/$carouselItem[eventBild]' class='d-block w-100 rounded' alt='$carouselItem[eventName]'></a>
@@ -89,7 +102,7 @@ require_once "include/include_head.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <select name='eventDatumTag' id="eventDatumSelect" class='form-select'>
                                 <?php
                                 for ($nummerTag = 1; $nummerTag <= 31; $nummerTag++) {
@@ -102,7 +115,7 @@ require_once "include/include_head.php";
                                 ?>
                             </select>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <select name='eventDatumMonat' class='form-select'>
                                 <?php
                                 foreach ($eventMonate as $monatsNummer => $monatsName) {
@@ -148,17 +161,24 @@ require_once "include/include_head.php";
 
         <div class="row p-2">
             <?php
-            $sql = "SELECT * FROM event WHERE eventStartDatum > $dateToday ORDER BY eventStartDatum ASC LIMIT 4";
-            $stmt = $db->query($sql);
-            while ($row =  $stmt->fetch()) {
+
+            $sqlPreview = "SELECT * FROM event WHERE eventStartDatum BETWEEN :currentDate AND :dateInAWeek ORDER BY eventStartDatum ASC LIMIT 8";
+
+            $stmtPreview = $db->prepare($sqlPreview);
+            $stmtPreview->bindParam(":currentDate", $dateToday);
+            $dateInAWeek = date('Y-m-d', strtotime('+7 days'));
+            $stmtPreview->bindParam(":dateInAWeek", $dateInAWeek);
+            $stmtPreview->execute();
+
+            while ($rowPreview =  $stmtPreview->fetch()) {
                 echo "<div class='col-md-3 my-2 p-1'>
                     <div class='border rounded bg-light p-3 text-center'>
-                        <h4 class='fw-light'><a href='event-details.php?eventID=$row[eventID]' class='text-decoration-none'>$row[eventName]</a></h4>
-                        <p><a href='event-details.php?eventID=$row[eventID]'><img src='img/$row[eventBild]' alt='$row[eventName]' class='img-fluid rounded'/></a></p>
-                        <h5 class='fw-light'>$row[eventKategorie] in $row[eventBundesland]</h5>";
+                        <h4 class='fw-light'><a href='event-details.php?eventID=$rowPreview[eventID]' class='text-decoration-none'>$rowPreview[eventName]</a></h4>
+                        <p><a href='event-details.php?eventID=$rowPreview[eventID]'><img src='img/$rowPreview[eventBild]' alt='$rowPreview[eventName]' class='img-fluid rounded'/></a></p>
+                        <h5 class='fw-light'>$rowPreview[eventKategorie] in $rowPreview[eventBundesland]</h5>";
 
-                $eventStartDatumExploded = explode("-", $row["eventStartDatum"]);
-                $eventEndDatumExploded = explode("-", $row["eventEndDatum"]);
+                $eventStartDatumExploded = explode("-", $rowPreview["eventStartDatum"]);
+                $eventEndDatumExploded = explode("-", $rowPreview["eventEndDatum"]);
 
                 $eventStartMonatNumerisch = (int)$eventStartDatumExploded[1];
                 $eventEndMonatNumerisch = (int)$eventEndDatumExploded[1];
@@ -180,9 +200,9 @@ require_once "include/include_head.php";
                     echo "<p>Am <strong>$eventStartDatumExploded[2]. $eventMonate[$eventStartMonatNumerisch] $eventStartDatumExploded[0]</strong></p>";
                 }
 
-                echo "<p><a href='event-details.php?eventID=$row[eventID]' class='btn btn-primary btn-sm'>Details</a>";
+                echo "<p><a href='event-details.php?eventID=$rowPreview[eventID]' class='btn btn-primary btn-sm'>Details</a>";
                 if (isset($_SESSION["userID"])) {
-                    echo "<a class='btn btn-warning btn-sm mx-1' href='edit-event.php?eventID=$row[eventID]'>Bearbeiten</a>";
+                    echo "<a class='btn btn-warning btn-sm mx-1' href='edit-event.php?eventID=$rowPreview[eventID]'>Bearbeiten</a>";
                 }
                 echo "</p>
                 </div>
@@ -195,25 +215,26 @@ require_once "include/include_head.php";
         <div class="row mt-2">
             <div class="col-md-12 text-center">
                 <h2 class="fw-light">Einloggen</h2>
-                <p>Einloggen mit folgendem Test-Account: eventuser, user@event.com, Test1234</p>
+                <p>Einloggen mit folgendem Test-Account: <br /><code>user@event.com</code><br /><code>Test1234</code></p>
             </div>
         </div>
         <div class="row mb-4">
-            <div class="col-md-8 offset-md-2 alert alert-secondary">
+            <div class="col-md-10 offset-md-1 alert alert-secondary">
                 <form method="post" class="row" action="<?php echo 'login.php'  ?>">
-                    <div class="mb-3 col-md-6">
+                    <div class="mb-3 col-md-4">
                         <label for="inputEmail" class="form-label">Email Adresse</label>
                         <input type="email" class="form-control" id="inputEmail" name="email" aria-describedby="emailHelp">
                     </div>
-                    <div class="mb-3 col-md-6">
+                    <div class="mb-3 col-md-4">
                         <label for="inputPassword" class="form-label">Password</label>
                         <input type="password" class="form-control" id="inputPassword" name="password">
                     </div>
-                    <p class="text-end mt-2">
-                        <a class="btn btn-secondary" href="index.php">Zurück</a>
-                        <a class="btn btn-warning" href="register.php">Neu registrieren</a>
-                        <button type="submit" class="btn btn-primary" name="einloggen">Login</button>
-                    </p>
+                    <div class="mb-3 col-md-4">
+                        <p class="mt-4 pt-2">
+                            <button type="submit" class="btn btn-primary" id="inputLogin" name="einloggen">Login</button>
+                            <a class="btn btn-warning" href="register.php">Neu registrieren</a>
+                        </p>
+                    </div>
                 </form>
             </div>
         </div>
