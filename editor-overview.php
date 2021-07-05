@@ -32,7 +32,7 @@ if (isset($_GET["loeschen"])) {
 
         <div class="row mt-2">
             <div class="col-md-12 text-center">
-                <h2 class="fw-light">Events Redaktionsbereich</h2>
+                <h2 class="fw-light">Redaktionsübersicht</h2>
                 <p><a href="create-event.php" class="btn btn-primary btn-lg">Neuen Event anlegen</a></p>
                 <p>Diese Ansicht zeigt <strong>alle</strong> Events. Um nach einem bestimmten Event zu suchen, bitte rufen Sie die <a href="event-list.php">Eventliste</a> auf.</p>
             </div>

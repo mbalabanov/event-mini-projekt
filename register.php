@@ -125,16 +125,16 @@ require_once "include/include_head.php";
 					<div class="row">
 						<div class="col-md-6">
 							<label for="inputUsername" class="form-label">Username</label>
-							<input type="text" name="userName" value="<?php echo $userName; ?>" id="inputUsername" class="form-control">
+							<input type="text" name="userName" value="<?php echo $userName; ?>" id="inputUsername" class="form-control" required>
 
 							<label for="inputEmail" class="form-label">Email</label>
-							<input type="text" name="email" value="<?php echo $email; ?>" id="inputEmail" class="form-control">
+							<input type="text" name="email" value="<?php echo $email; ?>" id="inputEmail" class="form-control" required>
 						</div>
 						<div class="col-md-6">
 							<label for="inputPassword" class="form-label">Passwort</label>
-							<input type="password" name="password1" value="<?php echo $password1; ?>" id="inputPassword" class="form-control">
+							<input type="password" name="password1" value="<?php echo $password1; ?>" id="inputPassword" class="form-control" required>
 							<label for="inputPasswordRepeat" class="form-label">Passwort wiederholen</label>
-							<input type="password" name="password2" value="<?php echo $password2; ?>" id="inputPasswordRepeat" class="form-control">
+							<input type="password" name="password2" value="<?php echo $password2; ?>" id="inputPasswordRepeat" class="form-control" required>
 
 							<div class="form-check">
 								<input class="form-check-input" type="checkbox" value="nutzerZustimmung" name="zustimmung" id="zustimmungCheckbox">

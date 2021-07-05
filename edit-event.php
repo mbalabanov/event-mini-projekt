@@ -286,7 +286,7 @@ if (isset($_POST["speichern"])) {
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <textarea name="eventBeschreibung" id="BeschreibungInput" class='form-control' rows="6"><?php echo $row["eventBeschreibung"]; ?></textarea>
+                                <textarea name="eventBeschreibung" id="BeschreibungInput" class='form-control' rows="6"><?php echo $row["eventBeschreibung"]; ?> required></textarea>
                             </div>
                         </div>
                     </div>

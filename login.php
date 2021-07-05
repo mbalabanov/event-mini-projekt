@@ -47,11 +47,11 @@ require_once "include/include_head.php";
                 <form method="post" class="row" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);  ?>">
                     <div class="mb-3 col-md-6">
                         <label for="inputEmail" class="form-label">Email Adresse</label>
-                        <input type="email" class="form-control" id="inputEmail" name="email" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="inputEmail" name="email" aria-describedby="emailHelp"  required>
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="inputPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" name="password">
+                        <input type="password" class="form-control" id="inputPassword" name="password" required>
                     </div>
                     <p class="text-end mt-2">
                         <a class="btn btn-secondary" href="index.php">Zurück</a>

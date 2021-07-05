@@ -145,7 +145,7 @@ require_once "include/include_head.php";
             $stmt->bindParam(":eventName", $eventName);
             $stmt->execute();
 
-            while ($row =  $stmt->fetch()) {
+            while ($row = $stmt->fetch()) {
                 echo "<div class='col-md-4 my-2 p-1'>
                     <div class='border rounded bg-light p-3 text-center'>
                         <h4 class='fw-light'><a href='event-details.php?eventID=$row[eventID]' class='text-decoration-none'>$row[eventName]</a></h4>

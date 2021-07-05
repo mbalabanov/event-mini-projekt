@@ -60,8 +60,13 @@ if (!isset($_REQUEST["eventID"])) {
                 echo "<p><strong>Name: </strong>$row[eventName]</p>";
                 echo "<p><strong>Kategorie: </strong>$row[eventKategorie]</p>";
                 echo "<p><strong>Bundesland: </strong>$row[eventBundesland]</p>";
-                echo "<p><strong>Start: </strong>$eventStartDatumExplodedTag. $eventMonate[$startMonatsIndex] $eventStartDatumExplodedJahr<br/>";
-                echo "<strong>Ende: </strong>$eventEndDatumExplodedTag. $eventMonate[$endMonatsIndex] $eventEndDatumExplodedJahr</p>";
+
+                if ($eventStartDatumExploded != $eventEndDatumExploded && $eventEndDatumExploded[0] != "0000") {
+                    echo "<p>Startet am <strong>$eventStartDatumExplodedTag. $eventMonate[$startMonatsIndex] $eventEndDatumExplodedJahr</strong> und läuft bis <strong>$eventEndDatumExplodedTag. $eventMonate[$startMonatsIndex] $eventEndDatumExplodedJahr</strong></p>";
+                } else {
+                    echo "<p>Am <strong>$eventStartDatumExplodedTag. $eventMonate[$startMonatsIndex] $eventEndDatumExplodedJahr</strong></p>";
+                }
+
                 echo "<p><strong>Beschreibung:</strong><br/>$row[eventBeschreibung]</p>";
                 ?>
                 <a href="event-list.php" class="btn btn-primary">Zur Eventliste</a>

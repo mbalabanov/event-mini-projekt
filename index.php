@@ -223,11 +223,11 @@ require_once "include/include_head.php";
                 <form method="post" class="row" action="<?php echo 'login.php'  ?>">
                     <div class="mb-3 col-md-4">
                         <label for="inputEmail" class="form-label">Email Adresse</label>
-                        <input type="email" class="form-control" id="inputEmail" name="email" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="inputEmail" name="email" aria-describedby="emailHelp" required>
                     </div>
                     <div class="mb-3 col-md-4">
                         <label for="inputPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" name="password">
+                        <input type="password" class="form-control" id="inputPassword" name="password" required>
                     </div>
                     <div class="mb-3 col-md-4">
                         <p class="mt-4 pt-2">

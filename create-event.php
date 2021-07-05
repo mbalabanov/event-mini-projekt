@@ -242,7 +242,7 @@ if (isset($_GET["loeschen"])) {
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <textarea name="eventBeschreibung" id="BeschreibungInput" class='form-control' rows="6"></textarea>
+                                <textarea name="eventBeschreibung" id="BeschreibungInput" class='form-control' rows="6" required></textarea>
                             </div>
                         </div>
                     </div>
