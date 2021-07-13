@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light mb-4 py-3 border-bottom border-primary">
     <div class="container-fluid">
-        <a class="navbar-brand text-primary" href="index.php">EVENT KALENDAR</a>
+        <a class="navbar-brand text-primary" href="index.php">DIGITAL ART ARCHIVEƒ</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -10,12 +10,12 @@
                     <a class="nav-link" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="event-list.php">Eventliste</a>
+                    <a class="nav-link" href="event-list.php">Ausstellungsliste</a>
                 </li>
 
                 <?php if (isset($_SESSION["userID"])) {
                     echo "<li class='nav-item'><a class='nav-link' href='editor-overview.php'>Redaktionsübersicht</a></li>";
-                    echo "<li class='nav-item'><a class='nav-link' href='create-event.php'>Event erstellen</a></li>";
+                    echo "<li class='nav-item'><a class='nav-link' href='create-event.php'>Ausstellung erstellen</a></li>";
                 }
                 ?>
 

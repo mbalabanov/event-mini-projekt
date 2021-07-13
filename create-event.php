@@ -98,7 +98,7 @@ if (isset($_GET["loeschen"])) {
 
         <div class="row mt-2">
             <div class="col-md-12">
-                <h2 class="fw-light">Neuen Event Erstellen</h2>
+                <h2 class="fw-light">Neue Ausstellung Erstellen</h2>
             </div>
         </div>
 
